@@ -64,7 +64,7 @@ h1, h2, h3, p { margin: 0; }
 .nav {
   position: fixed; inset: 0 0 auto 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1rem var(--pad);
+  padding: 1rem max(var(--pad), calc((100vw - var(--max)) / 2));
   color: var(--stone);
   transition: background .3s ease, box-shadow .3s ease;
 }
@@ -89,7 +89,7 @@ h1, h2, h3, p { margin: 0; }
 }
 
 @media (max-width: 860px) {
-  .burger { display: block; }
+  .burger { display: block; margin-left: auto; }
   .nav ul {
     position: absolute; top: 100%; left: 0; right: 0;
     flex-direction: column; gap: 0; padding: .5rem var(--pad) 1.5rem;
@@ -127,7 +127,7 @@ h1, h2, h3, p { margin: 0; }
 .names {
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(3.4rem, 9.2vw, 9rem);
+  font-size: clamp(4.2rem, 9.2vw, 9rem);
   line-height: .95;
   letter-spacing: -0.02em;
   font-variation-settings: "opsz" 96;
@@ -155,22 +155,23 @@ h1, h2, h3, p { margin: 0; }
   border-radius: 999px 999px 0 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 78%, #f3c56a 0 14%, rgba(243,197,106,0) 15%),
+    radial-gradient(circle at 50% 60%, #f3c56a 0 13%, rgba(243,197,106,0) 14%),
     linear-gradient(180deg, #2f4437 0%, #5b6f52 48%, #c58a2c 100%);
-  box-shadow: 0 0 0 10px var(--cypress), 0 0 0 11px rgba(224,160,48,.6);
+  outline: 1px solid rgba(224,160,48,.7);
+  outline-offset: 12px;
   animation: archIn 1.3s .2s cubic-bezier(.2,.8,.2,1) both;
 }
-@keyframes archIn { from { opacity: 0; clip-path: inset(100% 0 0 0); } to { opacity: 1; clip-path: inset(0); } }
+@keyframes archIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
 .arch img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .arch .ph {
-  position: absolute; inset: auto 0 12% 0; text-align: center;
+  position: absolute; inset: auto 0 7% 0; text-align: center;
   font-family: var(--display); font-style: italic; font-size: 1.1rem; color: rgba(29,42,35,.8);
 }
 
 @media (max-width: 860px) {
   .hero { padding-top: 6rem; }
   .hero .wrap { grid-template-columns: 1fr; }
-  .arch { max-width: 300px; order: -1; }
+  .arch { max-width: 280px; margin-top: 1.5rem; }
 }
 
 /* ============ Compte à rebours ============ */
@@ -189,7 +190,7 @@ h1, h2, h3, p { margin: 0; }
 /* ============ Histoire ============ */
 .story { padding: clamp(5rem, 11vw, 9rem) 0; }
 .story .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
-.story .h2 { max-width: 12ch; }
+.story .h2 { max-width: 15ch; }
 .story p { max-width: 52ch; color: #2c3a32; }
 .story p + p { margin-top: 1.1rem; }
 .sign { font-family: var(--display); font-style: italic; font-size: 1.6rem; margin-top: 1.8rem; color: var(--poppy); }
