@@ -1,63 +1,248 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f2eb" />
-  <meta name="description" content="Margaux & Odran — célébrons notre mariage le 18 septembre 2027." />
-  <title>Margaux & Odran — 18 septembre 2027</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Margaux &amp; Odran — 18 septembre 2027</title>
+<meta name="description" content="Margaux &amp; Odran — célébrons notre mariage le 18 septembre 2027 à Orléans.">
+<meta name="theme-color" content="#1d2a23">
+<meta property="og:title" content="Margaux &amp; Odran — 18 septembre 2027">
+<meta property="og:description" content="Une journée pour célébrer l'amour, la famille et les belles histoires.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 92V45a30 30 0 0 1 60 0v47z' fill='%23e0a030'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Retour à l'accueil">M <span>&</span> O</a>
-    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">☰</button>
-    <nav id="site-nav" aria-label="Navigation principale">
-      <a href="#histoire">Notre histoire</a><a href="#programme">Le grand jour</a><a href="#lieux">Les lieux</a><a href="#infos">Informations</a><a class="nav-cta" href="#rsvp">Répondre</a>
-    </nav>
-  </header>
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-decoration hero-decoration-left" aria-hidden="true">✳</div>
-      <div class="hero-content">
-        <p class="eyebrow">SAVE THE DATE · 18 SEPTEMBRE 2027</p>
-        <p class="hero-pretitle">Nous nous marions !</p>
-        <h1 id="hero-title">Margaux <em>&</em> Odran</h1>
-        <div class="hero-rule" aria-hidden="true"></div>
-        <p class="hero-subtitle">Une journée pour célébrer l'amour, la famille et les belles histoires.</p>
-        <a class="button button-dark" href="#rsvp">Confirmer ma présence <span aria-hidden="true">↗</span></a>
+
+<body id="top">
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Retour en haut">M <span>&amp;</span> O</a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav aria-label="Navigation principale">
+    <ul id="menu">
+      <li><a href="#histoire">Notre histoire</a></li>
+      <li><a href="#programme">Le grand jour</a></li>
+      <li><a href="#lieux">Les lieux</a></li>
+      <li><a href="#infos">Informations</a></li>
+      <li><a class="cta" href="#rsvp">Répondre</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="titre">
+  <div class="wrap">
+    <div>
+      <p class="hero-date">XVIII.IX.MMXXVII</p>
+      <h1 class="names" id="titre">
+        <span class="line"><span>Margaux</span></span>
+        <span class="line"><span><span class="amp">&amp;</span> Odran</span></span>
+      </h1>
+      <p class="hero-text">Une journée pour célébrer l'amour, la famille et les belles histoires.</p>
+      <a class="btn" href="#rsvp">Confirmer ma présence</a>
+      <p class="hero-place">Le 18 septembre 2027, à Orléans</p>
+    </div>
+
+    <!-- Pour mettre votre photo : déposez "photo-couple.jpg" à côté de ce fichier -->
+    <div class="arch" role="img" aria-label="Portrait de Margaux et Odran">
+      <img src="photo-couple.jpg" alt="Margaux et Odran" onerror="this.remove()">
+      <span class="ph">Votre photo ici</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPTE À REBOURS ============ -->
+<section class="count" aria-label="Compte à rebours">
+  <div class="wrap">
+    <h2>Le grand jour approche</h2>
+    <div class="clock" id="clock" role="timer" aria-live="off">
+      <div><b id="d">0</b><small>jours</small></div>
+      <div><b id="h">0</b><small>heures</small></div>
+      <div><b id="m">0</b><small>minutes</small></div>
+      <div><b id="s">0</b><small>secondes</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTOIRE ============ -->
+<section class="story" id="histoire" aria-labelledby="t-histoire">
+  <div class="wrap">
+    <div>
+      <h2 class="h2" id="t-histoire">Notre plus belle histoire s'écrit <em>avec vous</em></h2>
+      <div class="path">
+        <div>
+          <time datetime="2024-12-30">30 décembre 2024</time>
+          <span>Rome, la demande en mariage</span>
+        </div>
+        <div>
+          <time datetime="2027-09-18">18 septembre 2027</time>
+          <span>Orléans, le grand jour</span>
+        </div>
       </div>
-      <div class="hero-decoration hero-decoration-right" aria-hidden="true">✳</div>
-      <p class="hero-bottom">FAITES DÉFILER POUR DÉCOUVRIR <span aria-hidden="true">↓</span></p>
-    </section>
+    </div>
+    <div>
+      <p>Des premiers instants partagés à notre demande en mariage à Rome, le 30 décembre 2024, notre histoire nous a conduits à ce merveilleux rendez-vous.</p>
+      <p>Le 18 septembre 2027, nous serons heureux de vivre une nouvelle page de notre histoire, entourés des personnes que nous aimons.</p>
+      <p class="sign">Margaux &amp; Odran</p>
+    </div>
+  </div>
+</section>
 
-    <section class="countdown-section" aria-label="Compte à rebours">
-      <p class="eyebrow">LE GRAND JOUR APPROCHE</p>
-      <div class="countdown" id="countdown" aria-live="off">
-        <div><strong id="days">—</strong><span>jours</span></div><i>·</i><div><strong id="hours">—</strong><span>heures</span></div><i>·</i><div><strong id="minutes">—</strong><span>minutes</span></div><i>·</i><div><strong id="seconds">—</strong><span>secondes</span></div>
-      </div>
-    </section>
+<!-- ============ PROGRAMME ============ -->
+<section class="prog" id="programme" aria-labelledby="t-prog">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2" id="t-prog">Le programme de notre journée</h2>
+      <p>Les horaires précis seront ajoutés prochainement.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <span class="when">Horaire à venir</span><!-- ex : 15h00 -->
+        <div>
+          <h3>La cérémonie</h3>
+          <p>Église Saint-Marceau, Orléans.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">Horaire à venir</span>
+        <div>
+          <h3>Le cocktail</h3>
+          <p>Retrouvons-nous autour d'un verre au Domaine de la Fontaine.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">Horaire à venir</span>
+        <div>
+          <h3>Le dîner</h3>
+          <p>Un moment gourmand et convivial à partager ensemble.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">Horaire à venir</span>
+        <div>
+          <h3>La soirée</h3>
+          <p>Place à la fête et à la piste de danse !</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
 
-    <section id="histoire" class="section story-section">
-      <div class="story-art"><div class="photo-frame"><div class="art-leaf" aria-hidden="true">❦</div><p>Notre plus belle histoire<br /><em>s'écrit avec vous</em></p><small>UNE PHOTO DE NOUS DEUX ICI</small></div></div>
-      <div class="story-copy"><p class="eyebrow">NOTRE HISTOIRE</p><h2>Et tout a commencé<br /><em>par un nous.</em></h2><p>Des premiers instants partagés à notre demande en mariage à Rome, le 30 décembre 2024, notre histoire nous a conduits à ce merveilleux rendez-vous.</p><p>Le 18 septembre 2027, nous serons heureux de vivre une nouvelle page de notre histoire, entourés des personnes que nous aimons.</p><span class="signature">Margaux & Odran</span></div>
-    </section>
+<!-- ============ LIEUX ============ -->
+<section class="places" id="lieux" aria-labelledby="t-lieux">
+  <div class="wrap">
+    <h2 class="h2" id="t-lieux">Deux lieux, une belle journée.</h2>
+    <div class="arcade">
+      <article class="bay">
+        <p class="kind">La cérémonie</p>
+        <h3>Église Saint-Marceau</h3>
+        <p>Orléans</p>
+        <a class="link" href="https://www.google.com/maps/search/?api=1&query=%C3%89glise+Saint-Marceau+Orl%C3%A9ans" target="_blank" rel="noopener">Voir l'itinéraire</a>
+      </article>
+      <article class="bay">
+        <p class="kind">La réception</p>
+        <h3>Domaine de la Fontaine</h3>
+        <p>Adresse exacte à confirmer</p>
+        <span class="soon">L'itinéraire sera ajouté prochainement</span>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <section id="programme" class="section schedule-section">
-      <p class="eyebrow">LE 18 SEPTEMBRE 2027</p><h2>Le programme <em>de notre journée</em></h2><p class="section-intro">Les horaires précis seront ajoutés prochainement.</p>
-      <div class="timeline"><article><span class="timeline-icon">✣</span><h3>La cérémonie</h3><p>Église Saint-Marceau<br />Orléans</p><small>Horaire à venir</small></article><article><span class="timeline-icon">♧</span><h3>Le cocktail</h3><p>Retrouvons-nous autour d'un verre au Domaine de la Fontaine.</p><small>Horaire à venir</small></article><article><span class="timeline-icon">✧</span><h3>Le dîner</h3><p>Un moment gourmand et convivial à partager ensemble.</p><small>Horaire à venir</small></article><article><span class="timeline-icon">♫</span><h3>La soirée</h3><p>Place à la fête et à la piste de danse !</p><small>Horaire à venir</small></article></div>
-    </section>
+<!-- ============ RSVP ============ -->
+<section class="rsvp" id="rsvp" aria-labelledby="t-rsvp">
+  <div class="wrap">
+    <div class="intro">
+      <h2 class="h2" id="t-rsvp">Vous serez <em>des nôtres ?</em></h2>
+      <p>Vos réponses nous aideront à organiser cette belle journée.</p>
+      <p class="notice" id="notice" hidden>Les réponses ne sont pas encore ouvertes. Revenez bientôt, la date limite sera indiquée ici.</p>
+    </div>
 
-    <section id="lieux" class="section location-section"><p class="eyebrow">RENDEZ-VOUS</p><h2>Deux lieux, <em>une belle journée.</em></h2><div class="location-grid"><article class="location-card"><span class="location-index">01 / LA CÉRÉMONIE</span><div class="location-illustration">✣</div><h3>Église Saint-Marceau</h3><p>Orléans</p><a href="https://www.google.com/maps/search/?api=1&query=%C3%89glise+Saint-Marceau+Orl%C3%A9ans" target="_blank" rel="noopener noreferrer">Voir l'itinéraire ↗</a></article><article class="location-card"><span class="location-index">02 / LA RÉCEPTION</span><div class="location-illustration">❦</div><h3>Domaine de la Fontaine</h3><p>Adresse exacte à confirmer</p><span class="muted">L'itinéraire sera ajouté prochainement</span></article></div></section>
+    <form id="rsvp-form" novalidate>
+      <fieldset id="rsvp-fields">
+        <div class="field">
+          <label for="nom">Prénom et nom</label>
+          <input type="text" id="nom" name="nom" autocomplete="name" required>
+        </div>
 
-    <section id="rsvp" class="rsvp-section"><div class="rsvp-inner"><p class="eyebrow">NOUS AVONS HÂTE DE VOUS RETROUVER</p><h2>Vous serez <em>des nôtres ?</em></h2><p>Vos réponses nous aideront à organiser cette belle journée. Le formulaire de confirmation sera bientôt disponible.</p><div class="rsvp-note"><span aria-hidden="true">✉</span><span>Les RSVP ne sont pas encore ouverts. Revenez bientôt !</span></div><p class="fine-print">Les informations pratiques et la date limite de réponse seront précisées ici.</p></div></section>
+        <div class="field">
+          <fieldset style="gap:0">
+            <legend>Serez-vous présent(e) ?</legend>
+            <div class="choices">
+              <input type="radio" id="oui" name="presence" value="Oui" required>
+              <label for="oui">Avec grand plaisir</label>
+              <input type="radio" id="non" name="presence" value="Non">
+              <label for="non">Je ne pourrai pas venir</label>
+            </div>
+          </fieldset>
+        </div>
 
-    <section id="infos" class="section practical-section"><p class="eyebrow">TOUT CE QU'IL FAUT SAVOIR</p><h2>Les petites <em>informations utiles</em></h2><div class="faq"><details><summary>À quelle heure faut-il arriver ? <span>+</span></summary><p>Les horaires définitifs de la cérémonie et de la réception seront communiqués prochainement.</p></details><details><summary>Où peut-on dormir ? <span>+</span></summary><p>Nous ajouterons ici une sélection d'hébergements à proximité du domaine.</p></details><details><summary>Comment se rendre sur place ? <span>+</span></summary><p>Un lien vers l'église est disponible plus haut. Nous ajouterons l'adresse précise du domaine et les conseils de stationnement.</p></details><details><summary>Peut-on venir avec des enfants ? <span>+</span></summary><p>Nous vous communiquerons les modalités d'accueil des enfants lorsque l'organisation sera finalisée.</p></details><details><summary>Y a-t-il un dress code ? <span>+</span></summary><p>Nous préciserons prochainement s'il y a un dress code particulier.</p></details></div></section>
-  </main>
-  <footer><a href="#top" class="footer-monogram">M & O</a><p>18 SEPTEMBRE 2027 · AVEC TOUT NOTRE AMOUR</p><small>Un beau jour à partager, ensemble.</small></footer>
-  <script src="script.js"></script>
+        <div class="field">
+          <label for="nb">Nombre de personnes (vous compris)</label>
+          <input type="number" id="nb" name="nombre" min="1" max="10" value="1" inputmode="numeric">
+        </div>
+
+        <div class="field">
+          <label for="regime">Allergies ou régime alimentaire</label>
+          <input type="text" id="regime" name="regime">
+        </div>
+
+        <div class="field">
+          <label for="mot">Un petit mot pour nous</label>
+          <textarea id="mot" name="message"></textarea>
+        </div>
+
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <button class="btn" type="submit" id="send">Envoyer ma réponse</button>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+<!-- ============ INFOS ============ -->
+<section class="faq" id="infos" aria-labelledby="t-infos">
+  <div class="wrap">
+    <h2 class="h2" id="t-infos">Les petites informations utiles</h2>
+
+    <details>
+      <summary>À quelle heure faut-il arriver ?</summary>
+      <p>Les horaires définitifs de la cérémonie et de la réception seront communiqués prochainement.</p>
+    </details>
+    <details>
+      <summary>Où peut-on dormir ?</summary>
+      <p>Nous ajouterons ici une sélection d'hébergements à proximité du domaine.</p>
+    </details>
+    <details>
+      <summary>Comment se rendre sur place ?</summary>
+      <p>Un lien vers l'église est disponible dans la section « Les lieux ». Nous ajouterons l'adresse précise du domaine et les conseils de stationnement.</p>
+    </details>
+    <details>
+      <summary>Peut-on venir avec des enfants ?</summary>
+      <p>Nous vous communiquerons les modalités d'accueil des enfants lorsque l'organisation sera finalisée.</p>
+    </details>
+    <details>
+      <summary>Y a-t-il un dress code ?</summary>
+      <p>Nous préciserons prochainement s'il y a un dress code particulier.</p>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PIED DE PAGE ============ -->
+<footer>
+  <a class="logo" href="#top">M <span>&amp;</span> O</a>
+  <p class="date">18 SEPTEMBRE 2027</p>
+  <p>Un beau jour à partager, ensemble. Avec tout notre amour.</p>
+</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>
