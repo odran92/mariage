@@ -185,9 +185,9 @@ form.addEventListener("submit", async (e) => {
 
 
 /* ============ Coordonnées bancaires protégées par mot de passe ============
-   Les données (titulaire, IBAN, BIC) sont chiffrées (AES-256-GCM). Elles ne sont
+   Les données (IBAN) sont chiffrées (AES-256-GCM). Elles ne sont
    lisibles dans le navigateur qu'avec le bon mot de passe. Rien n'est en clair dans le site. */
-const IBAN_BLOB = "jUU2t3Ye6i2130k0XjPcLQ4/0OqK9mhDmS0kQ7XlzYmAjcfg5Fd1232qWIuDYnDmywC1TIxbREsel/VGRsJT3hRz7hiZ06FyNWcs9/upMErjGp+RcCdOr/NVXm4Nh4XxBhn7Qf15Ew8F8UUXmAqoGF1/xgcf2qpwAFfx0ci7k76lu0xLQvdEJXFis+z6RPqCgGpUts/c5b3nzZw=";
+const IBAN_BLOB = "ujRDCrXEEkQiTdN4zbJ3u1JACQ3V//4DosSLpOtpfnhcvSEvR0ElgMpsP5JeXKhkU0/AJcPGdjJeh+DGp/Ra6myk0DsPn/3IyNcXwVwX5/GAS1OnABgYWi0=";
 
 (() => {
   const openBtn = document.getElementById("iban-open");
@@ -230,9 +230,7 @@ const IBAN_BLOB = "jUU2t3Ye6i2130k0XjPcLQ4/0OqK9mhDmS0kQ7XlzYmAjcfg5Fd1232qWIuDY
     go.disabled = true;
     try {
       const d = await decrypt(pwd.value.trim());
-      document.getElementById("iban-titulaire").textContent = d.titulaire;
       document.getElementById("iban-iban").textContent = d.iban;
-      document.getElementById("iban-bic").textContent = d.bic;
       form.hidden = true;
       result.hidden = false;
     } catch (err) {
