@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mariage Margaux et Odran//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:mariage-margaux-odran-20270918@odran92.github.io
+DTSTAMP:20261012T120000Z
+DTSTART;VALUE=DATE:20270918
+DTEND;VALUE=DATE:20270919
+SUMMARY:Mariage de Margaux & Odran
+LOCATION:Domaine de la Fontaine\, 1379 rue de la Reine Blanche\, 45160 Olivet
+DESCRIPTION:Mariage de Margaux & Odran. Les horaires précis seront communiqués prochainement. Plus d'infos : https://odran92.github.io/mariage/mariage-margaux-odran/
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Mariage de Margaux & Odran dans une semaine
+END:VALARM
+END:VEVENT
+END:VCALENDAR
