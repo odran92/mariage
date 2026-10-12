@@ -536,8 +536,8 @@
   <div class="wrap">
     <h2 class="h2" id="t-cagnotte">Une petite <em>attention</em></h2>
     <div>
-      <p>Votre présence est déjà le plus beau des cadeaux. Si vous souhaitez toutefois nous gâter, nous mettons à votre disposition nos coordonnées bancaires.</p>
-      <button type="button" class="btn" id="iban-open" aria-expanded="false" aria-controls="iban-panel">Afficher les coordonnées bancaires</button>
+      <p>Votre présence est déjà le plus beau des cadeaux. Si vous souhaitez toutefois nous gâter, nous mettons à votre disposition notre IBAN.</p>
+      <button type="button" class="btn" id="iban-open" aria-expanded="false" aria-controls="iban-panel">Afficher l’IBAN</button>
 
       <div class="iban-panel" id="iban-panel" hidden>
         <form class="iban-form" id="iban-form" autocomplete="off">
@@ -550,9 +550,7 @@
         </form>
 
         <dl class="iban-result" id="iban-result" hidden>
-          <div><dt>Titulaire</dt><dd id="iban-titulaire"></dd></div>
           <div><dt>IBAN</dt><dd id="iban-iban"></dd><button type="button" class="iban-copy" data-target="iban-iban">Copier</button></div>
-          <div><dt>BIC</dt><dd id="iban-bic"></dd><button type="button" class="iban-copy" data-target="iban-bic">Copier</button></div>
         </dl>
       </div>
     </div>
