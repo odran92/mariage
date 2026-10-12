@@ -168,6 +168,10 @@
 
   .hero-text { margin-top: 2rem; max-width: 32ch; font-family: var(--display); font-style: italic; font-size: 1.55rem; line-height: 1.35; color: #3b3832; animation: fade 1s .8s both; }
   .hero .btn { margin-top: 2.2rem; animation: fade 1s 1s both; }
+  .cal { margin-top: 1.4rem; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; animation: fade 1s 1.2s both; }
+  .cal span { color: var(--or-fonce); font-weight: 500; }
+  .cal a { color: var(--noir); text-decoration: none; border-bottom: 1px solid var(--noir); padding-bottom: .2rem; transition: color .3s, border-color .3s; }
+  .cal a:hover { color: var(--or-fonce); border-color: var(--or-fonce); }
   .hero-place { margin-top: 2.2rem; font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); animation: fade 1s 1.1s both; }
   @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
@@ -401,6 +405,10 @@
       <p class="hero-text">Une journée pour célébrer l'amour, la famille et les belles histoires.</p>
       <a class="btn" href="#rsvp">Confirmer ma présence</a>
       <p class="hero-place">Le 18 septembre 2027, à Orléans</p>
+      <p class="cal"><span>Ajouter à mon agenda</span>
+        <a href="mariage-margaux-odran.ics" download>Apple / Outlook</a>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Mariage%20de%20Margaux%20%26%20Odran&amp;dates=20270918/20270919&amp;location=Domaine%20de%20la%20Fontaine%2C%201379%20rue%20de%20la%20Reine%20Blanche%2C%2045160%20Olivet&amp;details=Mariage%20de%20Margaux%20%26%20Odran.%20Les%20horaires%20pr%C3%A9cis%20seront%20communiqu%C3%A9s%20prochainement.%20Plus%20d%27infos%20%3A%20https%3A//odran92.github.io/mariage/mariage-margaux-odran/" target="_blank" rel="noopener">Google Agenda</a>
+      </p>
     </div>
 
     <!-- Photo du couple : fichier "photo-couple.jpg" placé à côté de ce fichier -->
@@ -523,8 +531,8 @@
         <div class="txt">
           <p class="kind">La réception</p>
           <h3>Domaine de la Fontaine</h3>
-          <p>Adresse exacte à confirmer</p>
-          <span class="soon">L'itinéraire sera ajouté prochainement</span>
+          <p>1379 rue de la Reine Blanche<br>45160 Olivet</p>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&query=Domaine%20de%20la%20Fontaine%2C%201379%20rue%20de%20la%20Reine%20Blanche%2C%2045160%20Olivet" target="_blank" rel="noopener">Voir l'itinéraire</a>
         </div>
       </article>
     </div>
@@ -653,15 +661,15 @@
     </details>
     <details>
       <summary>Comment se rendre sur place ?</summary>
-      <p>Un lien vers l'église est disponible dans la section « Les lieux ». Nous ajouterons l'adresse précise du domaine et les conseils de stationnement.</p>
+      <p>Le Domaine de la Fontaine se trouve au 1379 rue de la Reine Blanche, 45160 Olivet. Les liens d'itinéraire de chaque lieu sont dans la section « Les lieux ». Les conseils de stationnement seront ajoutés prochainement.</p>
     </details>
     <details>
       <summary>Peut-on venir avec des enfants ?</summary>
-      <p>Nous vous communiquerons les modalités d'accueil des enfants lorsque l'organisation sera finalisée.</p>
+      <p>Oui, les enfants sont les bienvenus ! Des babysitters seront présents pour que les parents puissent profiter pleinement de la fête.</p>
     </details>
     <details>
       <summary>Y a-t-il un dress code ?</summary>
-      <p>Nous préciserons prochainement s'il y a un dress code particulier.</p>
+      <p>Pas de dress code particulier : venez élégants et à l'aise. Une seule règle, non négociable : personne en blanc. Cette couleur est réservée à la mariée, et elle ne partage pas !</p>
     </details>
   </div>
 </section>
