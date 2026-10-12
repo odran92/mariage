@@ -188,7 +188,7 @@
     animation: archIn 1.3s .2s cubic-bezier(.2,.8,.2,1) both;
   }
   @keyframes archIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
-  .arch img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .arch img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: 62% 35%; }
   .arch .ph {
     position: absolute; inset: auto 0 7% 0; text-align: center;
     font-family: var(--display); font-style: italic; font-size: 1.25rem; color: rgba(27,26,24,.7);
@@ -250,24 +250,30 @@
   /* ============ Lieux ============ */
   .places { background: var(--noir); color: var(--ivoire); padding: clamp(5rem, 11vw, 9rem) 0; }
   .places .h2 { max-width: 14ch; }
-  .arcade { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 4vw, 4rem); margin-top: clamp(3rem, 7vw, 5rem); }
+  .arcade { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.25rem, 3vw, 3rem); margin-top: clamp(3rem, 7vw, 5rem); }
   .bay {
+    display: flex; flex-direction: column;
     border: 1px solid rgba(185,154,99,.75);
     border-radius: 999px 999px 0 0;
-    padding: clamp(5rem, 14vw, 9rem) clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding: 10px 10px 2.8rem;
     text-align: center;
-    background: linear-gradient(180deg, rgba(185,154,99,.14), rgba(185,154,99,0) 55%);
+    background: linear-gradient(180deg, rgba(185,154,99,.14), rgba(185,154,99,0) 60%);
   }
+  .bay .pic { aspect-ratio: 4 / 4.6; overflow: hidden; border-radius: 999px 999px 0 0; background: var(--noir-2); }
+  .bay .pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+  .bay:hover .pic img { transform: scale(1.05); }
+  .bay .txt { display: flex; flex-direction: column; align-items: center; padding: 1.9rem 1rem 0; flex: 1; }
   .bay .kind { font-size: .75rem; color: var(--or); font-weight: 500; letter-spacing: .24em; text-transform: uppercase; }
-  .bay h3 { font-family: var(--display); font-weight: 500; font-size: clamp(2.1rem, 3.6vw, 3.1rem); line-height: 1.05; margin: .7rem 0 .4rem; }
+  .bay h3 { font-family: var(--display); font-weight: 500; font-size: clamp(1.9rem, 2.8vw, 2.5rem); line-height: 1.05; margin: .7rem 0 .4rem; }
   .bay p { color: rgba(246,242,235,.75); }
+  .bay .txt p:not(.kind) { margin-bottom: 1.4rem; }
   .bay a.link {
-    display: inline-block; margin-top: 1.6rem; color: var(--ivoire); font-size: .78rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; text-decoration: none;
+    display: inline-block; margin-top: auto; color: var(--ivoire); font-size: .78rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; text-decoration: none;
     border-bottom: 1px solid var(--or); padding-bottom: .3rem;
   }
   .bay a.link:hover { color: var(--or); }
-  .bay .soon { display: inline-block; margin-top: 1.6rem; font-size: .95rem; color: rgba(246,242,235,.55); font-style: italic; }
-  @media (max-width: 760px) { .arcade { grid-template-columns: 1fr; } }
+  .bay .soon { display: inline-block; margin-top: auto; font-size: .95rem; color: rgba(246,242,235,.55); font-style: italic; }
+  @media (max-width: 960px) { .arcade { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; } }
 
   /* ============ RSVP ============ */
   .rsvp { padding: clamp(5rem, 11vw, 9rem) 0; }
@@ -369,9 +375,9 @@
       <p class="hero-place">Le 18 septembre 2027, à Orléans</p>
     </div>
 
-    <!-- Pour mettre votre photo : déposez "photo-couple.jpg" à côté de ce fichier -->
+    <!-- Photo du couple : fichier "photo-couple.jpg" placé à côté de ce fichier -->
     <div class="arch" role="img" aria-label="Portrait de Margaux et Odran">
-      <img src="photo-couple.jpg" alt="Margaux et Odran" onerror="this.remove()">
+      <img src="photo-couple.jpg" alt="Margaux et Odran devant la fontaine à Rome" width="1000" height="1333" fetchpriority="high" onerror="this.remove()">
       <span class="ph">Votre photo ici</span>
     </div>
   </div>
@@ -425,7 +431,14 @@
       <li>
         <span class="when">Horaire à venir</span><!-- ex : 15h00 -->
         <div>
-          <h3>La cérémonie</h3>
+          <h3>La cérémonie civile</h3>
+          <p>Mairie d'Orléans.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">Horaire à venir</span>
+        <div>
+          <h3>La cérémonie religieuse</h3>
           <p>Église Saint-Marceau, Orléans.</p>
         </div>
       </li>
@@ -457,19 +470,34 @@
 <!-- ============ LIEUX ============ -->
 <section class="places" id="lieux" aria-labelledby="t-lieux">
   <div class="wrap">
-    <h2 class="h2" id="t-lieux">Deux lieux, une belle journée.</h2>
+    <h2 class="h2" id="t-lieux">Trois lieux, une belle journée.</h2>
     <div class="arcade">
       <article class="bay">
-        <p class="kind">La cérémonie</p>
-        <h3>Église Saint-Marceau</h3>
-        <p>Orléans</p>
-        <a class="link" href="https://www.google.com/maps/search/?api=1&query=%C3%89glise+Saint-Marceau+Orl%C3%A9ans" target="_blank" rel="noopener">Voir l'itinéraire</a>
+        <div class="pic"><img src="mairie.jpg" alt="Façade de l'Hôtel de Ville d'Orléans" width="546" height="366" loading="lazy"></div>
+        <div class="txt">
+          <p class="kind">La cérémonie civile</p>
+          <h3>Mairie d'Orléans</h3>
+          <p>Hôtel de Ville</p>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&query=H%C3%B4tel+de+Ville+Orl%C3%A9ans" target="_blank" rel="noopener">Voir l'itinéraire</a>
+        </div>
       </article>
       <article class="bay">
-        <p class="kind">La réception</p>
-        <h3>Domaine de la Fontaine</h3>
-        <p>Adresse exacte à confirmer</p>
-        <span class="soon">L'itinéraire sera ajouté prochainement</span>
+        <div class="pic"><img src="eglise.jpg" alt="Orgue et nef de l'église Saint-Marceau" width="900" height="600" loading="lazy"></div>
+        <div class="txt">
+          <p class="kind">La cérémonie religieuse</p>
+          <h3>Église Saint-Marceau</h3>
+          <p>Orléans</p>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&query=%C3%89glise+Saint-Marceau+Orl%C3%A9ans" target="_blank" rel="noopener">Voir l'itinéraire</a>
+        </div>
+      </article>
+      <article class="bay">
+        <div class="pic"><img src="domaine.jpg" alt="Façade du Domaine de la Fontaine" width="490" height="323" loading="lazy"></div>
+        <div class="txt">
+          <p class="kind">La réception</p>
+          <h3>Domaine de la Fontaine</h3>
+          <p>Adresse exacte à confirmer</p>
+          <span class="soon">L'itinéraire sera ajouté prochainement</span>
+        </div>
       </article>
     </div>
   </div>
