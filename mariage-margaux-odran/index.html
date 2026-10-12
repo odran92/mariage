@@ -306,6 +306,12 @@
   .status.ok { color: #2d6a3e; }
   .status.err { color: var(--alerte); }
   .rsvp .btn { justify-self: start; }
+  [hidden] { display: none !important; }
+  .ask-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; }
+  .ask-row .inline { flex: 1 1 14rem; }
+  .ask-row .inline.small { flex: 0 1 9rem; }
+  .field .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(27,26,24,.45); }
 
   @media (max-width: 860px) { .rsvp .wrap { grid-template-columns: 1fr; } }
 
@@ -531,9 +537,40 @@
           </fieldset>
         </div>
 
-        <div class="field">
-          <label for="nb">Nombre de personnes (vous compris)</label>
-          <input type="number" id="nb" name="nombre" min="1" max="10" value="1" inputmode="numeric">
+        <div class="field" id="row-accompagne" hidden>
+          <fieldset style="gap:0">
+            <legend>Serez-vous accompagné(e) ?</legend>
+            <div class="ask-row">
+              <div class="choices">
+                <input type="radio" id="acc-non" name="accompagne" value="Non" checked>
+                <label for="acc-non">Non</label>
+                <input type="radio" id="acc-oui" name="accompagne" value="Oui">
+                <label for="acc-oui">Oui</label>
+              </div>
+              <div class="inline" id="acc-detail" hidden>
+                <label class="sr" for="acc-nom">Nom de la personne</label>
+                <input type="text" id="acc-nom" name="nom_accompagnant" placeholder="Prénom et nom de la personne" autocomplete="off">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="field" id="row-enfants" hidden>
+          <fieldset style="gap:0">
+            <legend>Venez-vous avec des enfants ?</legend>
+            <div class="ask-row">
+              <div class="choices">
+                <input type="radio" id="kid-non" name="enfants" value="Non" checked>
+                <label for="kid-non">Non</label>
+                <input type="radio" id="kid-oui" name="enfants" value="Oui">
+                <label for="kid-oui">Oui</label>
+              </div>
+              <div class="inline small" id="kids-detail" hidden>
+                <label class="sr" for="kid-nb">Nombre d'enfants</label>
+                <input type="number" id="kid-nb" name="nombre_enfants" min="1" max="10" placeholder="Combien ?" inputmode="numeric">
+              </div>
+            </div>
+          </fieldset>
         </div>
 
         <div class="field">
