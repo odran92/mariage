@@ -12,7 +12,7 @@
 
    WEDDING_DATE : date et heure du mariage (heure de Paris, +02:00 en septembre).
    Quand vous connaîtrez l'horaire de la cérémonie, remplacez 00:00:00 (ex : 15:00:00). */
-const RSVP_ENDPOINT = "";
+const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbxY1XCFaU7C7c-t2KVR9bOL0fj_iCUhOxMS-E7_FOKDTg-agiXJFHvvghsLBP5K81rv/exec";
 const WEDDING_DATE = "2027-09-18T00:00:00+02:00";
 
 const $ = (id) => document.getElementById(id);
