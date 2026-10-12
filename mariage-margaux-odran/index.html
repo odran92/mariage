@@ -281,6 +281,19 @@
   .gift .h2 { max-width: 12ch; }
   .gift p { max-width: 46ch; color: #38352f; font-size: 1.1rem; }
   .gift .btn { margin-top: 2rem; }
+  .iban-panel { margin-top: 2rem; max-width: 34rem; }
+  .iban-form label { display: block; font: 500 .72rem/1.4 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--or-fonce); margin-bottom: .7rem; }
+  .iban-row { display: flex; gap: .8rem; flex-wrap: wrap; }
+  .iban-row input { flex: 1 1 12rem; min-width: 0; font: 400 1rem var(--body); padding: .95rem 1rem; background: var(--ivoire); border: 1px solid var(--noir); border-radius: 0; color: var(--ink); }
+  .iban-row input:focus { outline: none; border-color: var(--or-fonce); box-shadow: 0 0 0 1px var(--or-fonce); }
+  .iban-row .btn { padding: 1rem 1.8rem; }
+  .iban-msg { min-height: 1.4em; margin-top: .8rem; font-size: .95rem; color: var(--alerte); }
+  .iban-result { background: var(--ivoire); border: 1px solid rgba(27,26,24,.25); padding: 1.6rem; display: grid; gap: 1.3rem; }
+  .iban-result > div { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; align-items: end; }
+  .iban-result dt { grid-column: 1 / -1; font: 500 .7rem/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--or-fonce); }
+  .iban-result dd { margin: 0; font: 400 1.1rem/1.4 var(--body); color: var(--ink); overflow-wrap: anywhere; letter-spacing: .02em; }
+  .iban-copy { font: 500 .68rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; background: none; border: 1px solid var(--noir); color: var(--noir); padding: .6rem .9rem; cursor: pointer; border-radius: 0; transition: background .3s, color .3s; }
+  .iban-copy:hover { background: var(--noir); color: var(--ivoire); }
   @media (max-width: 860px) { .gift .wrap { grid-template-columns: 1fr; } }
 
   /* ============ RSVP ============ */
@@ -523,8 +536,25 @@
   <div class="wrap">
     <h2 class="h2" id="t-cagnotte">Une petite <em>attention</em></h2>
     <div>
-      <p>Votre présence est déjà le plus beau des cadeaux. Si vous souhaitez toutefois nous gâter, nous avons ouvert une cagnotte à votre disposition.</p>
-      <a class="btn" href="https://www.onparticipe.fr/c/ttDjvfI3" target="_blank" rel="noopener">Je participe à la cagnotte</a>
+      <p>Votre présence est déjà le plus beau des cadeaux. Si vous souhaitez toutefois nous gâter, nous mettons à votre disposition nos coordonnées bancaires.</p>
+      <button type="button" class="btn" id="iban-open" aria-expanded="false" aria-controls="iban-panel">Afficher les coordonnées bancaires</button>
+
+      <div class="iban-panel" id="iban-panel" hidden>
+        <form class="iban-form" id="iban-form" autocomplete="off">
+          <label for="iban-pwd">Mot de passe indiqué sur votre invitation</label>
+          <div class="iban-row">
+            <input type="password" id="iban-pwd" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+            <button type="submit" class="btn" id="iban-go">Valider</button>
+          </div>
+          <p class="iban-msg" id="iban-msg" role="status" aria-live="polite"></p>
+        </form>
+
+        <dl class="iban-result" id="iban-result" hidden>
+          <div><dt>Titulaire</dt><dd id="iban-titulaire"></dd></div>
+          <div><dt>IBAN</dt><dd id="iban-iban"></dd><button type="button" class="iban-copy" data-target="iban-iban">Copier</button></div>
+          <div><dt>BIC</dt><dd id="iban-bic"></dd><button type="button" class="iban-copy" data-target="iban-bic">Copier</button></div>
+        </dl>
+      </div>
     </div>
   </div>
 </section>
