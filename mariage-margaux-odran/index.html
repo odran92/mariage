@@ -275,6 +275,14 @@
   .bay .soon { display: inline-block; margin-top: auto; font-size: .95rem; color: rgba(246,242,235,.55); font-style: italic; }
   @media (max-width: 960px) { .arcade { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; } }
 
+  /* ============ Cagnotte ============ */
+  .gift { background: var(--greige); padding: clamp(5rem, 11vw, 9rem) 0; }
+  .gift .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .gift .h2 { max-width: 12ch; }
+  .gift p { max-width: 46ch; color: #38352f; font-size: 1.1rem; }
+  .gift .btn { margin-top: 2rem; }
+  @media (max-width: 860px) { .gift .wrap { grid-template-columns: 1fr; } }
+
   /* ============ RSVP ============ */
   .rsvp { padding: clamp(5rem, 11vw, 9rem) 0; }
   .rsvp .wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
@@ -359,6 +367,7 @@
       <li><a href="#histoire">Notre histoire</a></li>
       <li><a href="#programme">Le grand jour</a></li>
       <li><a href="#lieux">Les lieux</a></li>
+      <li><a href="#cagnotte">Cagnotte</a></li>
       <li><a href="#infos">Informations</a></li>
       <li><a class="cta" href="#rsvp">Répondre</a></li>
     </ul>
@@ -505,6 +514,17 @@
           <span class="soon">L'itinéraire sera ajouté prochainement</span>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAGNOTTE ============ -->
+<section class="gift" id="cagnotte" aria-labelledby="t-cagnotte">
+  <div class="wrap">
+    <h2 class="h2" id="t-cagnotte">Une petite <em>attention</em></h2>
+    <div>
+      <p>Votre présence est déjà le plus beau des cadeaux. Si vous souhaitez toutefois nous gâter, nous avons ouvert une cagnotte à votre disposition.</p>
+      <a class="btn" href="https://www.onparticipe.fr/c/ttDjvfI3" target="_blank" rel="noopener">Je participe à la cagnotte</a>
     </div>
   </div>
 </section>
