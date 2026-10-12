@@ -4,9 +4,10 @@
    ========================================================== */
 
 /* ---------- Réglages ----------
-   RSVP_ENDPOINT : pour recevoir les réponses, créez un formulaire gratuit
-   sur https://formspree.io puis collez ici son adresse
-   (ex : "https://formspree.io/f/abcdwxyz").
+   RSVP_ENDPOINT : adresse qui reçoit les réponses des invités. Deux options :
+   - Google Sheets (recommandé, gratuit et sans limite) : collez l'adresse du
+     « web app » Google Apps Script (elle finit par /exec).
+   - Formspree : collez l'adresse du formulaire (ex : "https://formspree.io/f/abcdwxyz").
    Tant que c'est vide, le formulaire reste grisé avec le message « pas encore ouvert ».
 
    WEDDING_DATE : date et heure du mariage (heure de Paris, +02:00 en septembre).
@@ -109,6 +110,24 @@ if (!RSVP_ENDPOINT) {
   $("notice").hidden = false;
 }
 
+/* Affiche ou masque une question (et la retire de l'envoi quand elle est masquée) */
+function toggle(el, show) {
+  el.hidden = !show;
+  el.querySelectorAll("input").forEach((i) => (i.disabled = !show));
+}
+
+/* Les questions « accompagné(e) » et « enfants » n'apparaissent que si la personne vient */
+function refresh() {
+  const present = form.presence.value === "Oui";
+  toggle($("row-accompagne"), present);
+  toggle($("row-enfants"), present);
+  toggle($("acc-detail"), present && form.accompagne.value === "Oui");
+  toggle($("kids-detail"), present && form.enfants.value === "Oui");
+}
+form.addEventListener("change", refresh);
+form.addEventListener("reset", () => setTimeout(refresh));
+refresh();
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!RSVP_ENDPOINT) return;
@@ -122,17 +141,39 @@ form.addEventListener("submit", async (e) => {
     say("Choisissez si vous serez présent(e) ou non.", "err");
     return;
   }
+  if (form.presence.value === "Oui") {
+    if (form.accompagne.value === "Oui" && !form.nom_accompagnant.value.trim()) {
+      say("Indiquez le nom de la personne qui vous accompagne.", "err");
+      form.nom_accompagnant.focus();
+      return;
+    }
+    if (form.enfants.value === "Oui" && !(parseInt(form.nombre_enfants.value, 10) >= 1)) {
+      say("Indiquez le nombre d'enfants.", "err");
+      form.nombre_enfants.focus();
+      return;
+    }
+  }
 
   send.disabled = true;
   say("Envoi en cours…");
 
   try {
-    const res = await fetch(RSVP_ENDPOINT, {
-      method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" },
-    });
-    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = new FormData(form);
+    const isGoogle = /script\.google\.com/.test(RSVP_ENDPOINT);
+
+    if (isGoogle) {
+      /* Google Apps Script : la réponse n'est pas lisible depuis le site (mode no-cors),
+         une absence d'erreur signifie que l'envoi est parti. */
+      await fetch(RSVP_ENDPOINT, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) });
+    } else {
+      const res = await fetch(RSVP_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+    }
+
     form.reset();
     say("Merci, votre réponse est bien enregistrée.", "ok");
   } catch (err) {
