@@ -285,19 +285,37 @@
   .gift .h2 { max-width: 12ch; }
   .gift p { max-width: 46ch; color: #38352f; font-size: 1.1rem; }
   .gift .btn { margin-top: 2rem; }
-  .iban-panel { margin-top: 2rem; max-width: 34rem; }
-  .iban-form label { display: block; font: 500 .72rem/1.4 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--or-fonce); margin-bottom: .7rem; }
-  .iban-row { display: flex; gap: .8rem; flex-wrap: wrap; }
-  .iban-row input { flex: 1 1 12rem; min-width: 0; font: 400 1rem var(--body); padding: .95rem 1rem; background: var(--ivoire); border: 1px solid var(--noir); border-radius: 0; color: var(--ink); }
-  .iban-row input:focus { outline: none; border-color: var(--or-fonce); box-shadow: 0 0 0 1px var(--or-fonce); }
-  .iban-row .btn { padding: 1rem 1.8rem; }
-  .iban-msg { min-height: 1.4em; margin-top: .8rem; font-size: .95rem; color: var(--alerte); }
-  .iban-result { background: var(--ivoire); border: 1px solid rgba(27,26,24,.25); padding: 1.6rem; display: grid; gap: 1.3rem; }
-  .iban-result > div { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; align-items: end; }
-  .iban-result dt { grid-column: 1 / -1; font: 500 .7rem/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--or-fonce); }
-  .iban-result dd { margin: 0; font: 400 1.1rem/1.4 var(--body); color: var(--ink); overflow-wrap: anywhere; letter-spacing: .02em; }
+  .gift .wrap { align-items: start; }
+  .gift .h2 { max-width: 10ch; }
+  .gift-title { font-family: var(--display); font-weight: 500; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.15; margin-bottom: 1.6rem; }
+  .gift-title .flag { display: inline-block; width: 1.1em; height: auto; vertical-align: -.08em; margin-left: .3em; }
+  .gift-body p + p { margin-top: 1.1rem; }
+  .gift .gift-body .sign { margin-top: 2rem; font-size: 2rem; color: var(--or-fonce); }
+  @media (min-width: 861px) { .gift .h2 { position: sticky; top: 7rem; } }
+  .gift-actions { margin: 2rem 0 2.2rem; max-width: 34rem; }
+  .gift-actions .btn { margin-top: 0; }
+  .iban-line { margin-top: 1.6rem; background: var(--ivoire); border: 1px solid rgba(27,26,24,.25); padding: 1.3rem 1.5rem; display: grid; grid-template-columns: 1fr auto; gap: .5rem 1rem; align-items: end; }
+  .iban-label { grid-column: 1 / -1; font: 500 .7rem/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--or-fonce); }
+  .iban-val { font: 400 1.1rem/1.4 var(--body); color: var(--ink); overflow-wrap: anywhere; letter-spacing: .02em; }
   .iban-copy { font: 500 .68rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; background: none; border: 1px solid var(--noir); color: var(--noir); padding: .6rem .9rem; cursor: pointer; border-radius: 0; transition: background .3s, color .3s; }
   .iban-copy:hover { background: var(--noir); color: var(--ivoire); }
+
+  /* ============ Accès au site par code ============ */
+  .gate { display: none; position: fixed; inset: 0; z-index: 1000; place-items: center; padding: 1.5rem; background: radial-gradient(ellipse at 70% 20%, #eadfd8 0%, var(--ivoire) 55%); overflow-y: auto; }
+  html.locked .gate { display: grid; }
+  html.locked, html.locked body { overflow: hidden; }
+  html.locked body > *:not(#gate) { display: none !important; }
+  .gate-box { width: 100%; max-width: 26rem; text-align: center; }
+  .gate-mono { font-family: var(--display); font-style: italic; font-size: 1.7rem; letter-spacing: .02em; }
+  .gate-mono span { color: var(--or-fonce); }
+  .gate-names { font-family: var(--display); font-weight: 500; font-size: clamp(2.8rem, 9vw, 4.2rem); line-height: 1; margin-top: 1.6rem; }
+  .gate-names em { color: var(--or-fonce); }
+  .gate-date { margin-top: 1.1rem; font: 500 .8rem/1 var(--body); letter-spacing: .32em; color: var(--or-fonce); }
+  .gate-box label { display: block; margin: 2.6rem 0 .9rem; font-family: var(--display); font-style: italic; font-size: 1.3rem; color: #3b3832; }
+  .gate-box input { width: 100%; text-align: center; font: 400 1.05rem var(--body); letter-spacing: .1em; padding: 1rem; background: var(--ivoire); border: 1px solid var(--noir); border-radius: 0; color: var(--ink); }
+  .gate-box input:focus { outline: none; border-color: var(--or-fonce); box-shadow: 0 0 0 1px var(--or-fonce); }
+  .gate-box .btn { margin-top: 1rem; width: 100%; padding: 1.05rem 1.5rem; }
+  .gate-msg { min-height: 1.4em; margin-top: 1rem; font-size: .95rem; color: var(--alerte); }
   @media (max-width: 860px) { .gift .wrap { grid-template-columns: 1fr; } }
 
   /* ============ RSVP ============ */
@@ -371,9 +389,22 @@
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
 </style>
+<script>document.documentElement.classList.add("locked");</script>
 </head>
 
 <body id="top">
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-names">
+  <form class="gate-box" id="gate-form" autocomplete="off">
+    <p class="gate-mono">M <span>&amp;</span> O</p>
+    <p class="gate-names" id="gate-names">Margaux<br><em>&amp;</em> Odran</p>
+    <p class="gate-date">XVIII.IX.MMXXVII</p>
+    <label for="gate-pwd">Veuillez saisir le code figurant sur votre invitation</label>
+    <input type="password" id="gate-pwd" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+    <button type="submit" class="btn" id="gate-go">Entrer</button>
+    <p class="gate-msg" id="gate-msg" role="status" aria-live="polite"></p>
+  </form>
+</div>
+
 
 <!-- ============ NAVIGATION ============ -->
 <header class="nav" id="nav">
@@ -539,28 +570,29 @@
   </div>
 </section>
 
-<!-- ============ CAGNOTTE ============ -->
+<!-- ============ CAGNOTTE / VOYAGE DE NOCES ============ -->
 <section class="gift" id="cagnotte" aria-labelledby="t-cagnotte">
   <div class="wrap">
-    <h2 class="h2" id="t-cagnotte">Une petite <em>attention</em></h2>
-    <div>
-      <p>Votre présence est déjà le plus beau des cadeaux. Si vous souhaitez toutefois nous gâter, nous mettons à votre disposition notre IBAN.</p>
-      <button type="button" class="btn" id="iban-open" aria-expanded="false" aria-controls="iban-panel">Afficher l’IBAN</button>
+    <h2 class="h2" id="t-cagnotte">Voyage de <em>noces</em></h2>
+    <div class="gift-body">
+      <h3 class="gift-title">Notre voyage de noces au Japon <svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Japon"><rect x=".3" y=".3" width="29.4" height="19.4" fill="#fff" stroke="#b7b2a9" stroke-width=".6"/><circle cx="15" cy="10" r="6" fill="#bc002d"/></svg></h3>
+      <p>Le 18 septembre 2027, nous aurons le bonheur de nous dire oui, entourés de nos familles et de nos amis.</p>
+      <p>Votre présence à nos côtés sera déjà le plus beau des cadeaux !</p>
+      <p>Pour prolonger cette belle aventure, nous rêvons de partir à la découverte du Japon pour notre voyage de noces. Entre les temples de Kyoto, les rues animées de Tokyo, les paysages majestueux du mont Fuji et les traditions japonaises, nous espérons vivre un voyage inoubliable.</p>
+      <p>Pour celles et ceux qui souhaitent contribuer à ce beau projet, nous avons ouvert cette cagnotte. Chaque participation, quel que soit son montant, nous aidera à réaliser ce rêve et à créer de merveilleux souvenirs à deux.</p>
 
-      <div class="iban-panel" id="iban-panel" hidden>
-        <form class="iban-form" id="iban-form" autocomplete="off">
-          <label for="iban-pwd">Mot de passe indiqué sur votre invitation</label>
-          <div class="iban-row">
-            <input type="password" id="iban-pwd" autocomplete="off" autocapitalize="off" spellcheck="false" required>
-            <button type="submit" class="btn" id="iban-go">Valider</button>
-          </div>
-          <p class="iban-msg" id="iban-msg" role="status" aria-live="polite"></p>
-        </form>
-
-        <dl class="iban-result" id="iban-result" hidden>
-          <div><dt>IBAN</dt><dd id="iban-iban"></dd><button type="button" class="iban-copy" data-target="iban-iban">Copier</button></div>
-        </dl>
+      <div class="gift-actions">
+        <a class="btn" href="https://www.onparticipe.fr/c/ttDjvfI3" target="_blank" rel="noopener">Je participe à la cagnotte</a>
+        <div class="iban-line">
+          <span class="iban-label">Ou par virement (IBAN)</span>
+          <span class="iban-val" id="iban-iban"></span>
+          <button type="button" class="iban-copy" id="iban-copy">Copier</button>
+        </div>
       </div>
+
+      <p>Bien entendu, aucune obligation : votre présence et votre affection comptent avant tout pour nous.</p>
+      <p>Merci du fond du cœur de faire partie de notre histoire et de nous accompagner dans cette nouvelle aventure !</p>
+      <p class="sign">Margaux &amp; Odran</p>
     </div>
   </div>
 </section>
@@ -669,7 +701,7 @@
     </details>
     <details>
       <summary>Y a-t-il un dress code ?</summary>
-      <p>Aucun dress code imposé : sortez vos plus belles tenues, l'essentiel est que vous soyez élégants et à l'aise !<br>Petite précision toutefois : le blanc a déjà trouvé preneuse pour la journée. 🤍</p>
+      <p>Aucun dress code imposé : sortez vos plus belles tenues, l'essentiel est que vous soyez élégants et à l'aise !<br>Petite précision toutefois : le blanc a déjà trouvé preneuse pour la journée.</p>
     </details>
   </div>
 </section>
@@ -683,6 +715,6 @@
   <p>Un beau jour à partager, ensemble. Avec tout notre amour.</p>
 </footer>
 
-<script src="script.js?v=3" defer></script>
+<script src="script.js?v=4" defer></script>
 </body>
 </html>
