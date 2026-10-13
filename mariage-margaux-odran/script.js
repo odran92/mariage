@@ -184,34 +184,27 @@ form.addEventListener("submit", async (e) => {
 });
 
 
-/* ============ Coordonnées bancaires protégées par mot de passe ============
-   Les données (IBAN) sont chiffrées (AES-256-GCM). Elles ne sont
-   lisibles dans le navigateur qu'avec le bon mot de passe. Rien n'est en clair dans le site. */
-const IBAN_BLOB = "ujRDCrXEEkQiTdN4zbJ3u1JACQ3V//4DosSLpOtpfnhcvSEvR0ElgMpsP5JeXKhkU0/AJcPGdjJeh+DGp/Ra6myk0DsPn/3IyNcXwVwX5/GAS1OnABgYWi0=";
+/* ============ Accès au site par code ============
+   Le code ouvre le site ET déchiffre l'IBAN (AES-256-GCM). L'IBAN n'est donc
+   écrit en clair nulle part dans les fichiers. Le code n'est pas écrit non plus. */
+const IBAN_BLOB = "AZblQXmcH7IOPRftKlXCxWPd4KfxkeNhJoPgjvrM+KtWIX+STDpqb5bUyBcmc5d/tlDj0Uke1yrJ/CubjZvbeRdlNNCz23/gR4Whc5e4CoZP2H8C39EUs1E=";
 
 (() => {
-  const openBtn = document.getElementById("iban-open");
-  if (!openBtn) return;
-  const panel = document.getElementById("iban-panel");
-  const form = document.getElementById("iban-form");
-  const pwd = document.getElementById("iban-pwd");
-  const msg = document.getElementById("iban-msg");
-  const result = document.getElementById("iban-result");
-  const go = document.getElementById("iban-go");
-
-  openBtn.addEventListener("click", () => {
-    panel.hidden = false;
-    openBtn.hidden = true;
-    openBtn.setAttribute("aria-expanded", "true");
-    pwd.focus();
-  });
+  const html = document.documentElement;
+  const form = document.getElementById("gate-form");
+  if (!form) { html.classList.remove("locked"); return; }
+  const pwd = document.getElementById("gate-pwd");
+  const msg = document.getElementById("gate-msg");
+  const go = document.getElementById("gate-go");
+  const STORE = "mo_code";
 
   const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+  const norm = (s) => s.trim().toLowerCase();
 
-  async function decrypt(password) {
+  async function decrypt(code) {
     const raw = b64(IBAN_BLOB);
     const salt = raw.slice(0, 16), iv = raw.slice(16, 28), data = raw.slice(28);
-    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveKey"]);
+    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(norm(code)), "PBKDF2", false, ["deriveKey"]);
     const key = await crypto.subtle.deriveKey(
       { name: "PBKDF2", salt, iterations: 250000, hash: "SHA-256" },
       base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]
@@ -220,33 +213,49 @@ const IBAN_BLOB = "ujRDCrXEEkQiTdN4zbJ3u1JACQ3V//4DosSLpOtpfnhcvSEvR0ElgMpsP5JeX
     return JSON.parse(new TextDecoder().decode(plain));
   }
 
+  function unlock(d) {
+    const el = document.getElementById("iban-iban");
+    if (el) el.textContent = d.iban;
+    html.classList.remove("locked");
+    const target = location.hash && document.querySelector(location.hash);
+    if (target) target.scrollIntoView(); else window.scrollTo(0, 0);
+  }
+
+  const hasCrypto = !!(window.crypto && crypto.subtle);
+
+  // Déjà entré pendant cette visite ? On rouvre directement.
+  try {
+    const saved = sessionStorage.getItem(STORE);
+    if (saved && hasCrypto) {
+      decrypt(saved).then(unlock).catch(() => { try { sessionStorage.removeItem(STORE); } catch (e) {} });
+    }
+  } catch (e) {}
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
-    if (!window.crypto || !crypto.subtle) {
-      msg.textContent = "Votre navigateur ne permet pas d'afficher ces informations. Essayez avec un autre navigateur.";
+    if (!hasCrypto) {
+      msg.textContent = "Votre navigateur ne permet pas d'ouvrir le site. Essayez avec un autre navigateur.";
       return;
     }
     go.disabled = true;
     try {
-      const d = await decrypt(pwd.value.trim());
-      document.getElementById("iban-iban").textContent = d.iban;
-      form.hidden = true;
-      result.hidden = false;
+      const d = await decrypt(pwd.value);
+      try { sessionStorage.setItem(STORE, pwd.value); } catch (err) {}
+      unlock(d);
     } catch (err) {
-      msg.textContent = "Mot de passe incorrect.";
+      msg.textContent = "Code incorrect, merci de réessayer.";
       pwd.select();
     } finally {
       go.disabled = false;
     }
   });
 
-  document.querySelectorAll(".iban-copy").forEach((b) => {
-    b.addEventListener("click", async () => {
-      const text = document.getElementById(b.dataset.target).textContent;
-      try { await navigator.clipboard.writeText(text); b.textContent = "Copié"; }
-      catch (e) { b.textContent = "Sélectionnez"; }
-      setTimeout(() => (b.textContent = "Copier"), 1800);
-    });
+  const copy = document.getElementById("iban-copy");
+  if (copy) copy.addEventListener("click", async () => {
+    const text = document.getElementById("iban-iban").textContent;
+    try { await navigator.clipboard.writeText(text); copy.textContent = "Copié"; }
+    catch (e) { copy.textContent = "Sélectionnez"; }
+    setTimeout(() => (copy.textContent = "Copier"), 1800);
   });
 })();
