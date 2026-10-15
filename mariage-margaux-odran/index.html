@@ -355,6 +355,42 @@
   }
   @media (min-width: 861px) and (max-width: 1120px) { .nav ul { gap: 1.2rem; } }
 
+  /* ============ Souvenirs ============ */
+  .memo { background: var(--rose); padding: clamp(5rem, 11vw, 9rem) 0; text-align: center; }
+  .memo-eyebrow { margin: 0 0 1rem; font: 500 .72rem/1 var(--body); letter-spacing: .28em; text-transform: uppercase; color: var(--or-fonce); }
+  .memo .h2 { max-width: none; margin-inline: auto; }
+  .memo-text { max-width: 46ch; margin: 1.8rem auto 0; font-size: 1.1rem; color: #38352f; }
+  .memo-text p + p { margin-top: 1rem; }
+  .memo-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2.6rem; }
+  .memo-cta .btn { min-width: 15rem; }
+  .btn--ghost { background: transparent; color: var(--noir); border: 1px solid var(--noir); }
+  .btn--ghost:hover { background: var(--noir); color: var(--ivoire); }
+  .memo-note { max-width: 44ch; margin: 1.4rem auto 0; padding: 1rem 1.2rem; background: var(--ivoire); border-left: 2px solid var(--or); text-align: left; font-size: .95rem; color: #38352f; }
+  .memo-panel { max-width: 36rem; margin: 2.4rem auto 0; padding: 1.6rem; background: var(--ivoire); border: 1px solid rgba(27,26,24,.2); text-align: left; }
+  .memo-summary { margin: 0 0 1rem; font-weight: 500; }
+  .memo-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem; }
+  .memo-actions .btn, .memo-panel > .btn { width: 100%; }
+  .memo-link { background: none; border: 0; border-bottom: 1px solid var(--noir); padding: 0 0 .2rem; font: 500 .72rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--noir); cursor: pointer; }
+  .memo-link:hover { color: var(--or-fonce); border-color: var(--or-fonce); }
+  .memo-bar { height: 6px; margin-top: 1.2rem; background: var(--greige); overflow: hidden; }
+  .memo-bar span { display: block; height: 100%; width: 0; background: var(--or-fonce); transition: width .4s ease; }
+  .memo-status { margin: .8rem 0 0; font-size: .95rem; color: #38352f; }
+  .memo-warn { margin: .6rem 0 0; font-size: .85rem; color: var(--alerte); }
+  .memo-done { margin: 1rem 0; color: var(--or-fonce); font-weight: 500; }
+  .memo-panel > .btn { margin-top: 1rem; }
+  .memo-list { list-style: none; margin: 1rem 0 0; padding: 0; max-height: 14rem; overflow: auto; font-size: .85rem; }
+  .memo-item { display: flex; justify-content: space-between; gap: 1rem; padding: .4rem 0; border-top: 1px solid rgba(27,26,24,.1); }
+  .memo-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .memo-state { flex: none; color: var(--muted); }
+  .memo-item.is-err .memo-state { color: var(--alerte); }
+  .memo-gallery { margin-top: clamp(3.5rem, 8vw, 6rem); padding-top: 3rem; border-top: 1px solid rgba(27,26,24,.2); }
+  .memo-gallery-title { margin: 0; font: 500 clamp(1.8rem, 3.4vw, 2.5rem)/1.1 var(--display); }
+  .memo-gallery-empty { margin-top: 1rem; color: var(--muted); font-style: italic; }
+  .memo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; margin-top: 2rem; }
+  .memo-fig { margin: 0; } .memo-fig img, .memo-fig video { width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .memo-test { max-width: 36rem; margin: 2.5rem auto 0; padding: 1.4rem; border: 1px dashed var(--or-fonce); text-align: left; font-size: .9rem; }
+  @media (max-width: 600px) { .memo-cta .btn { width: 100%; } }
+
   /* ============ Cagnotte ============ */
   .gift { background: var(--greige); padding: clamp(5rem, 11vw, 9rem) 0; }
   .gift .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
@@ -490,6 +526,7 @@
       <li><a href="#programme">Le grand jour</a></li>
       <li><a href="#lieux">Les lieux</a></li>
       <li><a href="#dormir">Où dormir ?</a></li>
+      <li><a href="#souvenirs">Souvenirs</a></li>
       <li><a href="#cagnotte">Cagnotte</a></li>
       <li><a href="#infos">Informations</a></li>
       <li><a class="cta" href="#rsvp">Répondre</a></li>
@@ -675,6 +712,56 @@
   </div>
 </section>
 
+<!-- ============ SOUVENIRS ============ -->
+<section class="memo" id="souvenirs" aria-labelledby="t-souvenirs">
+  <div class="wrap">
+    <div class="memo-head">
+      <p class="memo-eyebrow">Partagez vos photos et vidéos</p>
+      <h2 class="h2" id="t-souvenirs">Nos plus beaux <em>souvenirs</em></h2>
+      <div class="memo-text">
+        <p>Un sourire volé, une danse improvisée, un fou rire, un instant inoubliable…</p>
+        <p>Vous avez immortalisé un moment de notre mariage ? Partagez-le avec nous !</p>
+        <p>Grâce à vous, nous pourrons revivre cette journée à travers vos regards et conserver tous ces précieux souvenirs.</p>
+      </div>
+    </div>
+
+    <div class="memo-cta">
+      <button type="button" class="btn" id="memo-photos">Déposer mes photos</button>
+      <button type="button" class="btn btn--ghost" id="memo-videos">Déposer mes vidéos</button>
+    </div>
+    <p class="memo-note" id="memo-videos-note" role="status" hidden></p>
+
+    <input type="file" id="memo-input" accept="image/*,.heic,.heif" multiple hidden>
+
+    <div class="memo-panel" id="memo-panel" hidden aria-live="polite">
+      <p class="memo-summary" id="memo-summary"></p>
+      <div class="memo-actions">
+        <button type="button" class="btn" id="memo-send" hidden>Envoyer mes souvenirs</button>
+        <button type="button" class="memo-link" id="memo-pick">Choisir d'autres photos</button>
+      </div>
+      <div class="memo-bar" id="memo-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span id="memo-bar-fill"></span></div>
+      <p class="memo-status" id="memo-status"></p>
+      <p class="memo-warn" id="memo-warn" hidden>Gardez cette page ouverte et l'écran allumé jusqu'à la fin de l'envoi.</p>
+      <button type="button" class="btn" id="memo-retry" hidden>Réessayer</button>
+      <p class="memo-done" id="memo-done" hidden></p>
+      <button type="button" class="memo-link" id="memo-again" hidden>Ajouter d'autres photos</button>
+      <ul class="memo-list" id="memo-list"></ul>
+    </div>
+
+    <div class="memo-gallery" id="memo-gallery">
+      <h3 class="memo-gallery-title">Revivez notre <em>mariage</em></h3>
+      <p class="memo-gallery-empty" id="memo-gallery-empty">Nos souvenirs arrivent bientôt.</p>
+      <div class="memo-grid" id="memo-gallery-grid"></div>
+    </div>
+
+    <div class="memo-test" id="memo-test" hidden>
+      <p><strong>Mode test</strong> (réservé aux mariés)</p>
+      <button type="button" class="btn" id="memo-test-run">Lancer le test d'envoi</button>
+      <div id="memo-test-out"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CAGNOTTE / VOYAGE DE NOCES ============ -->
 <section class="gift" id="cagnotte" aria-labelledby="t-cagnotte">
   <div class="wrap">
@@ -817,6 +904,8 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 <script src="hebergements.js?v=1" defer></script>
 <script src="carte.js?v=1" defer></script>
+<script src="souvenirs-config.js?v=1" defer></script>
+<script src="souvenirs.js?v=1" defer></script>
 <script src="script.js?v=4" defer></script>
 </body>
 </html>
