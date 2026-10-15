@@ -360,8 +360,13 @@
   .memo .h2 { max-width: none; margin-inline: auto; }
   .memo-text { max-width: 46ch; margin: 1.8rem auto 0; font-size: 1.1rem; color: #38352f; }
   .memo-text p + p { margin-top: 1rem; }
-  .memo-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2.6rem; }
-  .memo-cta .btn { min-width: 15rem; }
+  .memo-cta { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; margin-top: 2.8rem; }
+  .memo-btn { display: inline-flex; align-items: center; gap: 1.1rem; padding: 1.25rem 2.6rem; background: var(--noir); color: var(--ivoire); border: 1px solid var(--noir); border-radius: 0; cursor: pointer;
+              font: 500 .78rem/1 var(--body); letter-spacing: .24em; text-transform: uppercase; transition: background .35s, border-color .35s, gap .35s; }
+  .memo-btn i { font-style: normal; font-size: 1.05rem; letter-spacing: 0; color: var(--or); transition: transform .35s; }
+  .memo-btn:hover { background: var(--or-fonce); border-color: var(--or-fonce); } .memo-btn:hover i { transform: translateX(5px); color: var(--ivoire); }
+  .memo-btn:focus-visible { outline: 2px solid var(--or-fonce); outline-offset: 4px; }
+  .memo-sub { margin: 0; font: 500 .68rem/1.5 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
   .btn--ghost { background: transparent; color: var(--noir); border: 1px solid var(--noir); }
   .btn--ghost:hover { background: var(--noir); color: var(--ivoire); }
   .memo-note { max-width: 44ch; margin: 1.4rem auto 0; padding: 1rem 1.2rem; background: var(--ivoire); border-left: 2px solid var(--or); text-align: left; font-size: .95rem; color: #38352f; }
@@ -388,7 +393,7 @@
   .memo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; margin-top: 2rem; }
   .memo-fig { margin: 0; } .memo-fig img, .memo-fig video { width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
   .memo-test { max-width: 36rem; margin: 2.5rem auto 0; padding: 1.4rem; border: 1px dashed var(--or-fonce); text-align: left; font-size: .9rem; }
-  @media (max-width: 600px) { .memo-cta .btn { width: 100%; } }
+  @media (max-width: 600px) { .memo-btn { width: 100%; justify-content: center; padding-inline: 1.2rem; } }
 
   /* ============ Cagnotte ============ */
   .gift { background: var(--greige); padding: clamp(5rem, 11vw, 9rem) 0; }
@@ -725,10 +730,9 @@
     </div>
 
     <div class="memo-cta">
-      <button type="button" class="btn" id="memo-photos">Déposer mes photos</button>
-      <button type="button" class="btn btn--ghost" id="memo-videos">Déposer mes vidéos</button>
+      <button type="button" class="memo-btn" id="memo-photos"><span>Partager mes souvenirs</span><i aria-hidden="true">→</i></button>
+      <p class="memo-sub">Photos &amp; vidéos · qualité d'origine · espace privé</p>
     </div>
-    <p class="memo-note" id="memo-videos-note" role="status" hidden></p>
 
     <input type="file" id="memo-input" accept="image/*,.heic,.heif" multiple hidden>
 
