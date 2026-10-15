@@ -355,7 +355,7 @@
   }
 
   /* ============ Souvenirs ============ */
-  .memo { background: var(--rose); padding: clamp(5rem, 11vw, 9rem) 0; text-align: center; }
+  .memo { background: var(--ivoire); padding: clamp(5rem, 11vw, 9rem) 0; text-align: center; }
   .memo-eyebrow { margin: 0 0 1rem; font: 500 .72rem/1 var(--body); letter-spacing: .28em; text-transform: uppercase; color: var(--or-fonce); }
   .memo .h2 { max-width: none; margin-inline: auto; }
   .memo-text { max-width: 46ch; margin: 1.8rem auto 0; font-size: 1.1rem; color: #38352f; }
@@ -431,7 +431,7 @@
   @media (max-width: 860px) { .gift .wrap { grid-template-columns: 1fr; } }
 
   /* ============ RSVP ============ */
-  .rsvp { padding: clamp(5rem, 11vw, 9rem) 0; }
+  .rsvp { background: var(--greige); padding: clamp(5rem, 11vw, 9rem) 0; }
   .rsvp .wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
   .rsvp .intro p { margin-top: 1.3rem; max-width: 36ch; color: #38352f; }
   .notice {
@@ -526,12 +526,12 @@
   <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
   <nav aria-label="Navigation principale">
     <ul id="menu">
-      <li><a href="#souvenirs">Souvenirs</a></li>
       <li><a href="#histoire">Notre histoire</a></li>
       <li><a href="#programme">Le grand jour</a></li>
       <li><a href="#lieux">Les lieux</a></li>
       <li><a href="#dormir">Où dormir ?</a></li>
       <li><a href="#cagnotte">Cagnotte</a></li>
+      <li><a href="#souvenirs">Souvenirs</a></li>
       <li><a href="#infos">Informations</a></li>
       <li><a class="cta" href="#rsvp">Répondre</a></li>
     </ul>
@@ -579,46 +579,84 @@
   </div>
 </section>
 
-<!-- ============ SOUVENIRS ============ -->
-<section class="memo" id="souvenirs" aria-labelledby="t-souvenirs">
+<!-- ============ RSVP ============ -->
+<section class="rsvp" id="rsvp" aria-labelledby="t-rsvp">
   <div class="wrap">
-    <div class="memo-head">
-      <p class="memo-eyebrow">Partagez vos photos et vidéos</p>
-      <h2 class="h2" id="t-souvenirs">Nos plus beaux <em>souvenirs</em></h2>
-      <div class="memo-text">
-        <p>Un sourire volé, une danse improvisée, un fou rire, un instant inoubliable…</p>
-        <p>Vous avez immortalisé un moment de notre mariage ? Partagez-le avec nous !</p>
-        <p>Grâce à vous, nous pourrons revivre cette journée à travers vos regards et conserver tous ces précieux souvenirs.</p>
-      </div>
+    <div class="intro">
+      <h2 class="h2" id="t-rsvp">Vous serez <em>des nôtres ?</em></h2>
+      <p>Vos réponses nous aideront à organiser cette belle journée.</p>
+      <p class="notice" id="notice" hidden>Les réponses ne sont pas encore ouvertes. Revenez bientôt, la date limite sera indiquée ici.</p>
     </div>
 
-    <div class="memo-cta">
-      <button type="button" class="memo-btn" id="memo-photos"><span>Partager mes souvenirs</span><i aria-hidden="true">→</i></button>
-      <p class="memo-sub">Photos &amp; vidéos · qualité d'origine · espace privé</p>
-    </div>
+    <form id="rsvp-form" novalidate>
+      <fieldset id="rsvp-fields">
+        <div class="field">
+          <label for="nom">Prénom et nom</label>
+          <input type="text" id="nom" name="nom" autocomplete="name" required>
+        </div>
 
-    <input type="file" id="memo-input" accept="image/*,.heic,.heif" multiple hidden>
+        <div class="field">
+          <fieldset style="gap:0">
+            <legend>Serez-vous présent(e) ?</legend>
+            <div class="choices">
+              <input type="radio" id="oui" name="presence" value="Oui" required>
+              <label for="oui">Avec grand plaisir</label>
+              <input type="radio" id="non" name="presence" value="Non">
+              <label for="non">Je ne pourrai pas venir</label>
+            </div>
+          </fieldset>
+        </div>
 
-    <div class="memo-panel" id="memo-panel" hidden aria-live="polite">
-      <p class="memo-summary" id="memo-summary"></p>
-      <div class="memo-actions">
-        <button type="button" class="btn" id="memo-send" hidden>Envoyer mes souvenirs</button>
-        <button type="button" class="memo-link" id="memo-pick">Choisir d'autres photos</button>
-      </div>
-      <div class="memo-bar" id="memo-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span id="memo-bar-fill"></span></div>
-      <p class="memo-status" id="memo-status"></p>
-      <p class="memo-warn" id="memo-warn" hidden>Gardez cette page ouverte et l'écran allumé jusqu'à la fin de l'envoi.</p>
-      <button type="button" class="btn" id="memo-retry" hidden>Réessayer</button>
-      <p class="memo-done" id="memo-done" hidden></p>
-      <button type="button" class="memo-link" id="memo-again" hidden>Ajouter d'autres photos</button>
-      <ul class="memo-list" id="memo-list"></ul>
-    </div>
+        <div class="field" id="row-accompagne" hidden>
+          <fieldset style="gap:0">
+            <legend>Serez-vous accompagné(e) ?</legend>
+            <div class="ask-row">
+              <div class="choices">
+                <input type="radio" id="acc-non" name="accompagne" value="Non" checked>
+                <label for="acc-non">Non</label>
+                <input type="radio" id="acc-oui" name="accompagne" value="Oui">
+                <label for="acc-oui">Oui</label>
+              </div>
+              <div class="inline" id="acc-detail" hidden>
+                <label class="sr" for="acc-nom">Nom de la personne</label>
+                <input type="text" id="acc-nom" name="nom_accompagnant" placeholder="Prénom et nom de la personne" autocomplete="off">
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
-    <div class="memo-test" id="memo-test" hidden>
-      <p><strong>Mode test</strong> (réservé aux mariés)</p>
-      <button type="button" class="btn" id="memo-test-run">Lancer le test d'envoi</button>
-      <div id="memo-test-out"></div>
-    </div>
+        <div class="field" id="row-enfants" hidden>
+          <fieldset style="gap:0">
+            <legend>Venez-vous avec des enfants ?</legend>
+            <div class="ask-row">
+              <div class="choices">
+                <input type="radio" id="kid-non" name="enfants" value="Non" checked>
+                <label for="kid-non">Non</label>
+                <input type="radio" id="kid-oui" name="enfants" value="Oui">
+                <label for="kid-oui">Oui</label>
+              </div>
+              <div class="inline small" id="kids-detail" hidden>
+                <label class="sr" for="kid-nb">Nombre d'enfants</label>
+                <input type="number" id="kid-nb" name="nombre_enfants" min="1" max="10" placeholder="Combien ?" inputmode="numeric">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="field">
+          <label for="regime">Allergies ou régime alimentaire</label>
+          <input type="text" id="regime" name="regime">
+        </div>
+
+        <div class="field">
+          <label for="mot">Un petit mot pour nous</label>
+          <textarea id="mot" name="message"></textarea>
+        </div>
+
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <button class="btn" type="submit" id="send">Envoyer ma réponse</button>
+      </fieldset>
+    </form>
   </div>
 </section>
 
@@ -780,84 +818,46 @@
   </div>
 </section>
 
-<!-- ============ RSVP ============ -->
-<section class="rsvp" id="rsvp" aria-labelledby="t-rsvp">
+<!-- ============ SOUVENIRS ============ -->
+<section class="memo" id="souvenirs" aria-labelledby="t-souvenirs">
   <div class="wrap">
-    <div class="intro">
-      <h2 class="h2" id="t-rsvp">Vous serez <em>des nôtres ?</em></h2>
-      <p>Vos réponses nous aideront à organiser cette belle journée.</p>
-      <p class="notice" id="notice" hidden>Les réponses ne sont pas encore ouvertes. Revenez bientôt, la date limite sera indiquée ici.</p>
+    <div class="memo-head">
+      <p class="memo-eyebrow">Partagez vos photos et vidéos</p>
+      <h2 class="h2" id="t-souvenirs">Nos plus beaux <em>souvenirs</em></h2>
+      <div class="memo-text">
+        <p>Un sourire volé, une danse improvisée, un fou rire, un instant inoubliable…</p>
+        <p>Vous avez immortalisé un moment de notre mariage ? Partagez-le avec nous !</p>
+        <p>Grâce à vous, nous pourrons revivre cette journée à travers vos regards et conserver tous ces précieux souvenirs.</p>
+      </div>
     </div>
 
-    <form id="rsvp-form" novalidate>
-      <fieldset id="rsvp-fields">
-        <div class="field">
-          <label for="nom">Prénom et nom</label>
-          <input type="text" id="nom" name="nom" autocomplete="name" required>
-        </div>
+    <div class="memo-cta">
+      <button type="button" class="memo-btn" id="memo-photos"><span>Partager mes souvenirs</span><i aria-hidden="true">→</i></button>
+      <p class="memo-sub">Photos &amp; vidéos · qualité d'origine · espace privé</p>
+    </div>
 
-        <div class="field">
-          <fieldset style="gap:0">
-            <legend>Serez-vous présent(e) ?</legend>
-            <div class="choices">
-              <input type="radio" id="oui" name="presence" value="Oui" required>
-              <label for="oui">Avec grand plaisir</label>
-              <input type="radio" id="non" name="presence" value="Non">
-              <label for="non">Je ne pourrai pas venir</label>
-            </div>
-          </fieldset>
-        </div>
+    <input type="file" id="memo-input" accept="image/*,.heic,.heif" multiple hidden>
 
-        <div class="field" id="row-accompagne" hidden>
-          <fieldset style="gap:0">
-            <legend>Serez-vous accompagné(e) ?</legend>
-            <div class="ask-row">
-              <div class="choices">
-                <input type="radio" id="acc-non" name="accompagne" value="Non" checked>
-                <label for="acc-non">Non</label>
-                <input type="radio" id="acc-oui" name="accompagne" value="Oui">
-                <label for="acc-oui">Oui</label>
-              </div>
-              <div class="inline" id="acc-detail" hidden>
-                <label class="sr" for="acc-nom">Nom de la personne</label>
-                <input type="text" id="acc-nom" name="nom_accompagnant" placeholder="Prénom et nom de la personne" autocomplete="off">
-              </div>
-            </div>
-          </fieldset>
-        </div>
+    <div class="memo-panel" id="memo-panel" hidden aria-live="polite">
+      <p class="memo-summary" id="memo-summary"></p>
+      <div class="memo-actions">
+        <button type="button" class="btn" id="memo-send" hidden>Envoyer mes souvenirs</button>
+        <button type="button" class="memo-link" id="memo-pick">Choisir d'autres photos</button>
+      </div>
+      <div class="memo-bar" id="memo-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span id="memo-bar-fill"></span></div>
+      <p class="memo-status" id="memo-status"></p>
+      <p class="memo-warn" id="memo-warn" hidden>Gardez cette page ouverte et l'écran allumé jusqu'à la fin de l'envoi.</p>
+      <button type="button" class="btn" id="memo-retry" hidden>Réessayer</button>
+      <p class="memo-done" id="memo-done" hidden></p>
+      <button type="button" class="memo-link" id="memo-again" hidden>Ajouter d'autres photos</button>
+      <ul class="memo-list" id="memo-list"></ul>
+    </div>
 
-        <div class="field" id="row-enfants" hidden>
-          <fieldset style="gap:0">
-            <legend>Venez-vous avec des enfants ?</legend>
-            <div class="ask-row">
-              <div class="choices">
-                <input type="radio" id="kid-non" name="enfants" value="Non" checked>
-                <label for="kid-non">Non</label>
-                <input type="radio" id="kid-oui" name="enfants" value="Oui">
-                <label for="kid-oui">Oui</label>
-              </div>
-              <div class="inline small" id="kids-detail" hidden>
-                <label class="sr" for="kid-nb">Nombre d'enfants</label>
-                <input type="number" id="kid-nb" name="nombre_enfants" min="1" max="10" placeholder="Combien ?" inputmode="numeric">
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="field">
-          <label for="regime">Allergies ou régime alimentaire</label>
-          <input type="text" id="regime" name="regime">
-        </div>
-
-        <div class="field">
-          <label for="mot">Un petit mot pour nous</label>
-          <textarea id="mot" name="message"></textarea>
-        </div>
-
-        <p class="status" id="status" role="status" aria-live="polite"></p>
-        <button class="btn" type="submit" id="send">Envoyer ma réponse</button>
-      </fieldset>
-    </form>
+    <div class="memo-test" id="memo-test" hidden>
+      <p><strong>Mode test</strong> (réservé aux mariés)</p>
+      <button type="button" class="btn" id="memo-test-run">Lancer le test d'envoi</button>
+      <div id="memo-test-out"></div>
+    </div>
   </div>
 </section>
 
