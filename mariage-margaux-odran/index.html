@@ -92,12 +92,12 @@
   }
   .nav.solid { background: rgba(246, 242, 235, .94); backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(27,26,24,.12); }
   .logo {
-    font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.7rem; text-decoration: none; letter-spacing: .02em;
+    font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.7rem; text-decoration: none; letter-spacing: .02em; white-space: nowrap; flex: none;
   }
   .logo span { color: var(--or-fonce); }
-  .nav ul { display: flex; gap: 2.2rem; list-style: none; margin: 0; padding: 0; align-items: center; }
+  .nav ul { display: flex; gap: clamp(1rem, 1.6vw, 1.6rem); list-style: none; margin: 0; padding: 0; align-items: center; }
   .nav ul a {
-    text-decoration: none; font-size: .78rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+    white-space: nowrap; text-decoration: none; font-size: .76rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase;
     position: relative; padding-block: .4rem;
   }
   .nav ul a::after {
@@ -114,7 +114,7 @@
     font: 500 .78rem var(--body); letter-spacing: .2em; text-transform: uppercase; padding: .65rem 1.1rem; cursor: pointer;
   }
 
-  @media (max-width: 860px) {
+  @media (max-width: 1280px) {
     .burger { display: block; margin-left: auto; }
     .nav ul {
       position: absolute; top: 100%; left: 0; right: 0;
@@ -353,7 +353,6 @@
     .stay-filters button { flex: 0 0 auto; white-space: nowrap; }
     .stay-map { height: 420px; }
   }
-  @media (min-width: 861px) and (max-width: 1120px) { .nav ul { gap: 1.2rem; } }
 
   /* ============ Souvenirs ============ */
   .memo { background: var(--rose); padding: clamp(5rem, 11vw, 9rem) 0; text-align: center; }
@@ -904,8 +903,8 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 <script src="hebergements.js?v=1" defer></script>
 <script src="carte.js?v=1" defer></script>
-<script src="souvenirs-config.js?v=1" defer></script>
-<script src="souvenirs.js?v=1" defer></script>
+<script src="souvenirs-config.js?v=2" defer></script>
+<script src="souvenirs.js?v=2" defer></script>
 <script src="script.js?v=4" defer></script>
 </body>
 </html>
