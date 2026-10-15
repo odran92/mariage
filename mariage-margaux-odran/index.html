@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
   /* ============ Charte : gris Dior, ivoire, noir chaud, or champagne ============ */
   :root {
@@ -280,6 +281,80 @@
   .bay .soon { display: inline-block; margin-top: auto; font-size: .95rem; color: rgba(246,242,235,.55); font-style: italic; }
   @media (max-width: 960px) { .arcade { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; } }
 
+  /* ============ Où dormir ? ============ */
+  .stay { background: var(--ivoire); padding: clamp(5rem, 11vw, 9rem) 0; }
+  .stay-head { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(1.5rem, 6vw, 6rem); align-items: end; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .stay .h2 { max-width: 10ch; }
+  .stay-intro { max-width: 52ch; font-size: 1.1rem; color: #38352f; }
+  .stay-filters { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1.2rem; }
+  .stay-filters button { font: 500 .7rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; background: transparent; color: var(--noir); border: 1px solid var(--noir); padding: .85rem 1.1rem; cursor: pointer; border-radius: 2px; transition: background .3s, color .3s, border-color .3s; }
+  .stay-filters button:hover { border-color: var(--or-fonce); color: var(--or-fonce); }
+  .stay-filters button.is-on { background: var(--noir); color: var(--ivoire); border-color: var(--noir); }
+  .stay-filters .n { opacity: .6; margin-left: .35em; }
+  .stay-filters .n:empty { display: none; }
+  .stay-mapbox { border: 1px solid rgba(27,26,24,.25); border-radius: 2px; overflow: hidden; background: var(--greige); }
+  .stay-map { height: clamp(380px, 64vh, 620px); width: 100%; background: var(--greige); font-family: var(--body); }
+  .stay-map .leaflet-tile-pane { filter: grayscale(.6) sepia(.18) contrast(.96) brightness(1.02); }
+  .stay-map.is-failed { display: grid; place-items: center; padding: 2rem; }
+  .stay-fail { text-align: center; max-width: 30ch; color: #38352f; }
+  .leaflet-container img { max-width: none !important; }
+  .stay-meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: .8rem 0 0; font-size: .85rem; color: var(--muted); }
+  .stay-meta p { margin: 0; }
+  .stay-count { font-weight: 500; letter-spacing: .08em; }
+  /* marqueurs */
+  .mk-wrap { background: none; border: 0; }
+  .mk { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--ivoire); color: var(--noir); border: 1.5px solid var(--noir); box-shadow: 0 3px 10px rgba(27,26,24,.3); transition: transform .25s, background .25s, color .25s, border-color .25s; }
+  .mk svg { width: 20px; height: 20px; }
+  .mk:hover, .mk.is-active { background: var(--noir); color: var(--or); border-color: var(--or); transform: scale(1.12); }
+  .mk-domaine { width: 52px; height: 52px; background: var(--noir); color: var(--or); border: 2px solid var(--or); box-shadow: 0 0 0 5px rgba(185,154,99,.28), 0 4px 14px rgba(27,26,24,.4); }
+  .mk-domaine svg { width: 32px; height: 24px; }
+  .mk-domaine:hover { transform: none; background: var(--noir); }
+  .mo-tip { background: var(--noir); color: var(--ivoire); border: 0; border-radius: 2px; font: 500 .7rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; padding: .55rem .8rem; box-shadow: none; }
+  .mo-tip.leaflet-tooltip-top::before { border-top-color: var(--noir); }
+  /* fiche (popup) */
+  .mo-popup .leaflet-popup-content-wrapper { background: var(--ivoire); color: var(--ink); border-radius: 2px; box-shadow: 0 10px 30px rgba(27,26,24,.28); padding: 0; }
+  .mo-popup .leaflet-popup-content { margin: 0; width: auto !important; font-family: var(--body); }
+  .mo-popup .leaflet-popup-tip { background: var(--ivoire); }
+  .mo-popup a.leaflet-popup-close-button { color: var(--noir); top: 6px; right: 6px; }
+  .pop { padding: 1.3rem 1.3rem 1.2rem; }
+  .pop-photo { display: block; width: calc(100% + 2.6rem); max-width: none !important; margin: -1.3rem -1.3rem 1rem; height: 130px; object-fit: cover; }
+  .pop-kind { margin: 0 1.2rem .4rem 0; font: 500 .66rem/1.2 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--or-fonce); }
+  .pop h4 { margin: 0 0 .5rem; font: 500 1.45rem/1.15 var(--display); }
+  .pop-addr { margin: 0; font-size: .92rem; color: #38352f; line-height: 1.45; }
+  .pop-dist { margin: .35rem 0 0; font-size: .85rem; color: var(--muted); }
+  .pop-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .pop-btn { flex: 1 1 auto; text-align: center; font: 500 .64rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; text-decoration: none; background: var(--noir); color: var(--ivoire) !important; border: 1px solid var(--noir); padding: .8rem .9rem; border-radius: 2px; transition: background .3s, border-color .3s; }
+  .pop-btn:hover { background: var(--or-fonce); border-color: var(--or-fonce); }
+  .pop-btn--ghost { background: transparent; color: var(--noir) !important; }
+  .pop-btn--ghost:hover { background: var(--noir); border-color: var(--noir); color: var(--ivoire) !important; }
+  /* liste */
+  .stay-list { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .stay-card { background: #fbf9f4; border: 1px solid rgba(27,26,24,.18); border-radius: 2px; padding: 1.5rem; display: flex; flex-direction: column; transition: border-color .3s, box-shadow .3s, transform .3s; }
+  .stay-card[hidden] { display: none; }
+  .stay-card.is-active { border-color: var(--or-fonce); box-shadow: 0 0 0 1px var(--or-fonce); }
+  .stay-photo { display: block; width: calc(100% + 3rem); max-width: none; margin: -1.5rem -1.5rem 1.1rem; height: 150px; object-fit: cover; }
+  .stay-kind { margin: 0 0 .5rem; font: 500 .68rem/1.2 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--or-fonce); }
+  .stay-card h3 { margin: 0 0 .7rem; font: 500 1.6rem/1.12 var(--display); }
+  .stay-addr { margin: 0; font-size: .95rem; color: #38352f; line-height: 1.5; }
+  .stay-dist { margin: .45rem 0 0; font-size: .88rem; color: var(--muted); }
+  .stay-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.1rem; margin-top: auto; padding-top: 1.3rem; }
+  .stay-focus, .stay-link { font: 500 .68rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--noir); background: none; border: 0; border-bottom: 1px solid var(--noir); padding: 0 0 .25rem; cursor: pointer; text-decoration: none; transition: color .3s, border-color .3s; }
+  .stay-focus:hover, .stay-link:hover { color: var(--or-fonce); border-color: var(--or-fonce); }
+  .stay-book { margin-left: auto; font: 500 .66rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; text-decoration: none; background: var(--noir); color: var(--ivoire); padding: .75rem 1.05rem; border-radius: 2px; transition: background .3s; }
+  .stay-book:hover { background: var(--or-fonce); }
+  .stay-empty { margin-top: 2rem; color: var(--muted); }
+  .stay-note { margin-top: 1.8rem; font-size: .85rem; color: var(--muted); max-width: 60ch; }
+  @media (max-width: 960px) { .stay-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 860px) { .stay-head { grid-template-columns: 1fr; align-items: start; } }
+  @media (max-width: 600px) {
+    .stay-list { grid-template-columns: 1fr; }
+    .stay-filters { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad); padding-bottom: .4rem; scrollbar-width: none; }
+    .stay-filters::-webkit-scrollbar { display: none; }
+    .stay-filters button { flex: 0 0 auto; white-space: nowrap; }
+    .stay-map { height: 420px; }
+  }
+  @media (min-width: 861px) and (max-width: 1120px) { .nav ul { gap: 1.2rem; } }
+
   /* ============ Cagnotte ============ */
   .gift { background: var(--greige); padding: clamp(5rem, 11vw, 9rem) 0; }
   .gift .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
@@ -412,6 +487,7 @@
       <li><a href="#histoire">Notre histoire</a></li>
       <li><a href="#programme">Le grand jour</a></li>
       <li><a href="#lieux">Les lieux</a></li>
+      <li><a href="#dormir">Où dormir ?</a></li>
       <li><a href="#cagnotte">Cagnotte</a></li>
       <li><a href="#infos">Informations</a></li>
       <li><a class="cta" href="#rsvp">Répondre</a></li>
@@ -567,6 +643,36 @@
   </div>
 </section>
 
+<!-- ============ OÙ DORMIR ? ============ -->
+<section class="stay" id="dormir" aria-labelledby="t-dormir">
+  <div class="wrap">
+    <div class="stay-head">
+      <h2 class="h2" id="t-dormir">Où <em>dormir</em> ?</h2>
+      <p class="stay-intro">Pour profiter pleinement de cette journée et danser jusqu'au bout de la nuit, nous avons sélectionné quelques hébergements à proximité du Domaine de la Fontaine. Retrouvez-les sur la carte et choisissez celui qui vous convient le mieux !</p>
+    </div>
+
+    <div class="stay-filters" role="group" aria-label="Filtrer les hébergements">
+      <button type="button" class="is-on" data-filter="tous" aria-pressed="true">Tous <span class="n"></span></button>
+      <button type="button" data-filter="proche" aria-pressed="false">À proximité du domaine <span class="n"></span></button>
+      <button type="button" data-filter="hotel" aria-pressed="false">Hôtels <span class="n"></span></button>
+      <button type="button" data-filter="chambres" aria-pressed="false">Chambres d'hôtes <span class="n"></span></button>
+      <button type="button" data-filter="budget" aria-pressed="false">Petits budgets <span class="n"></span></button>
+    </div>
+
+    <div class="stay-mapbox">
+      <div id="stay-map" class="stay-map" role="region" aria-label="Carte des hébergements autour du Domaine de la Fontaine"></div>
+    </div>
+    <div class="stay-meta">
+      <p id="stay-hint" class="stay-hint"></p>
+      <p id="stay-count" class="stay-count" aria-live="polite"></p>
+    </div>
+
+    <ul id="stay-list" class="stay-list"></ul>
+    <p id="stay-empty" class="stay-empty" hidden>Aucun hébergement ne correspond à ce filtre pour le moment.</p>
+    <p class="stay-note">Distances calculées à vol d'oiseau depuis le domaine. Les tarifs et disponibilités sont à consulter directement auprès de chaque établissement.</p>
+  </div>
+</section>
+
 <!-- ============ CAGNOTTE / VOYAGE DE NOCES ============ -->
 <section class="gift" id="cagnotte" aria-labelledby="t-cagnotte">
   <div class="wrap">
@@ -575,16 +681,15 @@
       <p>Le 18 septembre 2027, nous aurons le bonheur de nous dire oui, entourés de nos familles et de nos amis.</p>
       <p>Votre présence à nos côtés sera déjà le plus beau des cadeaux !</p>
       <p>Pour prolonger cette belle aventure, nous rêvons de partir à la découverte du Japon pour notre voyage de noces.</p>
-      <p>Pour celles et ceux qui souhaitent contribuer à ce beau projet, nous avons ouvert cette cagnotte. Chaque participation, quel que soit son montant, nous aidera à réaliser ce rêve et à créer de merveilleux souvenirs. Bien entendu, aucune obligation : votre présence et votre affection comptent avant tout pour nous.</p>
+      <p>Pour celles et ceux qui souhaitent contribuer à ce beau projet, nous avons ouvert cette cagnotte. Chaque participation, quel que soit son montant, nous aidera à réaliser ce rêve et à créer de merveilleux souvenirs.</p>
+      <p>Merci du fond du cœur de faire partie de notre histoire !</p>
+      <p class="sign">Margaux &amp; Odran</p>
 
       <div class="iban-line">
         <span class="iban-label">IBAN</span>
         <span class="iban-val" id="iban-iban"></span>
         <button type="button" class="iban-copy" id="iban-copy">Copier</button>
       </div>
-
-      <p>Merci du fond du cœur de faire partie de notre histoire !</p>
-      <p class="sign">Margaux &amp; Odran</p>
     </div>
   </div>
 </section>
@@ -707,6 +812,9 @@
   <p>Un beau jour à partager, ensemble. Avec tout notre amour.</p>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<script src="hebergements.js?v=1" defer></script>
+<script src="carte.js?v=1" defer></script>
 <script src="script.js?v=4" defer></script>
 </body>
 </html>
