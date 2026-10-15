@@ -361,7 +361,7 @@
   .memo-text { max-width: 46ch; margin: 1.8rem auto 0; font-size: 1.1rem; color: #38352f; }
   .memo-text p + p { margin-top: 1rem; }
   .memo-cta { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; margin-top: 2.8rem; }
-  .memo-btn { display: inline-flex; align-items: center; gap: 1.1rem; padding: 1.25rem 2.6rem; background: var(--noir); color: var(--ivoire); border: 1px solid var(--noir); border-radius: 0; cursor: pointer;
+  .memo-btn { text-decoration: none; display: inline-flex; align-items: center; gap: 1.1rem; padding: 1.25rem 2.6rem; background: var(--noir); color: var(--ivoire); border: 1px solid var(--noir); border-radius: 0; cursor: pointer;
               font: 500 .78rem/1 var(--body); letter-spacing: .24em; text-transform: uppercase; transition: background .35s, border-color .35s, gap .35s; }
   .memo-btn i { font-style: normal; font-size: 1.05rem; letter-spacing: 0; color: var(--or); transition: transform .35s; }
   .memo-btn:hover { background: var(--or-fonce); border-color: var(--or-fonce); } .memo-btn:hover i { transform: translateX(5px); color: var(--ivoire); }
@@ -832,7 +832,7 @@
     </div>
 
     <div class="memo-cta">
-      <button type="button" class="memo-btn" id="memo-photos"><span>Partager mes souvenirs</span><i aria-hidden="true">→</i></button>
+      <a class="memo-btn" id="memo-photos" href="https://script.google.com/macros/s/AKfycbxEStrasQHw445A9FM4XHJJfkA3N4Trd06Owk91qSpOPOxb6KfwoAD-XXqZoxCtGqpxkg/exec" target="_blank" rel="noopener"><span>Partager mes souvenirs</span><i aria-hidden="true">→</i></a>
       <p class="memo-sub">Photos &amp; vidéos · qualité d'origine · espace privé</p>
     </div>
 
