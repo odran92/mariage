@@ -1,1016 +1,531 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Margaux &amp; Odran — 18 septembre 2027</title>
-<meta name="description" content="Margaux &amp; Odran — célébrons notre mariage le 18 septembre 2027 à Orléans.">
-<meta name="theme-color" content="#f6f2eb">
-<meta property="og:title" content="Margaux &amp; Odran — 18 septembre 2027">
-<meta property="og:description" content="Une journée pour célébrer l'amour, la famille et les belles histoires.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:url" content="https://odran92.github.io/mariage/mariage-margaux-odran/">
-<meta property="og:image" content="https://odran92.github.io/mariage/mariage-margaux-odran/photo-couple.jpg">
-<meta property="og:image:alt" content="Margaux et Odran devant la fontaine à Rome">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 92V45a30 30 0 0 1 60 0v47z' fill='%23b99a63'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Odran Leguedey</title>
+<meta name="description" content="Odran Leguedey, Responsable Communication & Événementiel. Plus de 9 ans en stratégie de contenu, production vidéo et événementiel.">
+<meta property="og:title" content="Odran Leguedey | Communication & Événementiel">
+<meta property="og:description" content="Stratégie de contenu, studio TV, événements nationaux. Paris & Île-de-France.">
+<meta property="og:image" content="https://oleguedey-ctrl.github.io/1753259608152.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Hanken+Grotesk:wght@400;500;600&display=swap">
 <style>
-  /* ============ Charte : gris Dior, ivoire, noir chaud, or champagne ============ */
-  :root {
-    --noir: #1b1a18;         /* noir chaud */
-    --noir-2: #2a2825;
-    --ivoire: #f6f2eb;       /* ivoire, fond clair */
-    --greige: #d8d3cb;       /* gris Dior */
-    --rose: #eadfd8;         /* rose poudré */
-    --or: #b99a63;           /* or champagne */
-    --or-fonce: #7a5c2c;     /* or foncé, pour le texte sur fond clair */
-    --alerte: #9b2c22;
-    --ink: #1b1a18;
-    --muted: #6b665e;
-
-    --display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
-    --body: "Jost", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-
-    --pad: clamp(1.25rem, 5vw, 4rem);
-    --max: 1180px;
+/* Concept : le site comme une régie de télévision. Une antenne en direct (hero), un bandeau titre,
+   des audiences, un mur d'écrans et un conducteur pour le parcours. */
+:root{
+  --bg:#F1F2F5; --surface:#FFFFFF; --ink:#14161D; --muted:#5A6072; --line:#D6D9E1;
+  --signal:#1B3CF5; --signal-ink:#FFFFFF; --tally:#E0242C;
+  --studio:#06070B; --studio-ink:#F4F5F8; --studio-muted:#A3A8B8;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wrap:1180px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B0D13; --surface:#131722; --ink:#EDEFF4; --muted:#99A0B3; --line:#252A37;
+    --signal:#6E85FF; --signal-ink:#06070B; --tally:#FF4B52; color-scheme:dark;
   }
+}
+:root[data-theme="dark"]{
+  --bg:#0B0D13; --surface:#131722; --ink:#EDEFF4; --muted:#99A0B3; --line:#252A37;
+  --signal:#6E85FF; --signal-ink:#06070B; --tally:#FF4B52; color-scheme:dark;
+}
 
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    font-family: var(--body);
-    font-weight: 400;
-    font-size: 1.0625rem;
-    line-height: 1.7;
-    color: var(--ink);
-    background: var(--ivoire);
-    -webkit-font-smoothing: antialiased;
-  }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  h1, h2, h3, p { margin: 0; }
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.02;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
 
-  :focus-visible { outline: 2px solid var(--or-fonce); outline-offset: 4px; }
+/* ---------- En-tête ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--studio)}
+.top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top.scrolled{background:color-mix(in srgb,var(--studio) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:rgba(255,255,255,.08)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:68px;color:var(--studio-ink)}
+.mark{font-family:var(--f-display);font-weight:900;font-stretch:125%;font-size:20px;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.mark i{width:9px;height:9px;border-radius:50%;background:var(--tally);box-shadow:0 0 12px var(--tally)}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{font-size:14px;font-weight:500;text-decoration:none;padding:8px 12px;border-radius:999px;color:var(--studio-muted);transition:color .2s,background .2s}
+.nav a:hover{color:var(--studio-ink);background:rgba(255,255,255,.08)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-body);font-weight:600;font-size:15px;text-decoration:none;padding:13px 22px;border-radius:999px;border:0;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-signal{background:var(--signal);color:#fff}
+.btn-ghost{background:rgba(255,255,255,.08);color:var(--studio-ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.btn-ghost:hover{background:rgba(255,255,255,.16)}
+.top .btn{padding:9px 16px;font-size:14px}
+@media (max-width:900px){.nav{display:none}.top .btn{margin-left:auto}}
 
-  .wrap { width: min(100% - 2 * var(--pad), var(--max)); margin-inline: auto; }
+/* ---------- Antenne (hero) ---------- */
+.onair{position:relative;background:var(--studio);color:var(--studio-ink);overflow:hidden;isolation:isolate}
+.onair video,.onair .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.onair .poster{background:radial-gradient(120% 90% at 70% 20%,#1a2350 0%,#06070B 60%)}
+.onair::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(6,7,11,.55) 0%,rgba(6,7,11,.15) 35%,rgba(6,7,11,.85) 82%,var(--studio) 100%),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px)}
+.onair .wrap{position:relative;min-height:min(92vh,900px);display:flex;flex-direction:column;padding-block:100px 56px}
+.hud{display:flex;justify-content:space-between;align-items:center;font-family:var(--f-display);font-stretch:80%;font-weight:600;font-size:14px;letter-spacing:.06em;color:var(--studio-muted);font-variant-numeric:tabular-nums}
+.rec{display:flex;align-items:center;gap:10px;color:var(--studio-ink)}
+.rec b{display:inline-flex;align-items:center;gap:7px;background:var(--tally);color:#fff;padding:4px 10px 4px 8px;border-radius:4px;font-weight:800;letter-spacing:.1em}
+.rec b::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;animation:blink 1.2s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.frame{position:absolute;inset:88px max(20px,env(safe-area-inset-right,0px)) 40px max(20px,env(safe-area-inset-left,0px));pointer-events:none;
+  --c:rgba(255,255,255,.35);
+  background:
+   linear-gradient(var(--c),var(--c)) top left/28px 1.5px,linear-gradient(var(--c),var(--c)) top left/1.5px 28px,
+   linear-gradient(var(--c),var(--c)) top right/28px 1.5px,linear-gradient(var(--c),var(--c)) top right/1.5px 28px,
+   linear-gradient(var(--c),var(--c)) bottom left/28px 1.5px,linear-gradient(var(--c),var(--c)) bottom left/1.5px 28px,
+   linear-gradient(var(--c),var(--c)) bottom right/28px 1.5px,linear-gradient(var(--c),var(--c)) bottom right/1.5px 28px;
+  background-repeat:no-repeat}
+.lower{margin-top:auto;display:grid;gap:0;max-width:100%}
+.l-name{font-weight:900;font-stretch:125%;font-size:clamp(46px,10.5vw,148px);letter-spacing:-.045em;line-height:.88;text-transform:none}
+.l-name span{display:block}
+.l-bar{display:flex;flex-wrap:wrap;align-items:stretch;margin-top:26px;width:fit-content;max-width:100%}
+.l-bar .role{background:var(--signal);color:#fff;font-family:var(--f-display);font-weight:700;font-stretch:90%;font-size:clamp(17px,2.2vw,24px);padding:12px 20px;letter-spacing:-.005em}
+.l-bar .org{background:var(--studio-ink);color:var(--studio);font-family:var(--f-display);font-weight:600;font-stretch:90%;font-size:clamp(15px,1.8vw,19px);padding:12px 18px;display:flex;align-items:center}
+.hero-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px;margin-top:36px}
+.hero-foot p{max-width:46ch;font-size:clamp(17px,1.7vw,20px);color:var(--studio-muted);line-height:1.5}
+.hero-foot p strong{color:var(--studio-ink);font-weight:600}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
 
-  .h2 {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: clamp(2.5rem, 5.6vw, 4.6rem);
-    line-height: 1.02;
-    letter-spacing: -0.005em;
-  }
-  .h2 em { font-style: italic; }
+/* Séquence d'ouverture : le bandeau entre comme un habillage TV */
+@media (prefers-reduced-motion:no-preference){
+  .l-name span{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+  .l-name span:nth-child(2){animation-delay:.12s}
+  .l-bar .role{animation:wipe .7s cubic-bezier(.7,0,.2,1) .55s both}
+  .l-bar .org{animation:wipe .6s cubic-bezier(.7,0,.2,1) .78s both}
+  .hero-foot{animation:fade .8s ease 1.1s both}
+}
+@keyframes rise{from{transform:translateY(40%);opacity:0;clip-path:inset(0 0 100% 0)}to{transform:none;opacity:1;clip-path:inset(0 0 -10% 0)}}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
 
-  .btn {
-    display: inline-block;
-    font: 500 .8rem/1 var(--body);
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    padding: 1.2rem 2.4rem;
-    background: var(--noir);
-    color: var(--ivoire);
-    text-decoration: none;
-    border: 1px solid var(--noir);
-    border-radius: 0;
-    cursor: pointer;
-    transition: background .3s ease, color .3s ease, border-color .3s ease;
-  }
-  .btn:hover { background: var(--or); border-color: var(--or); color: var(--noir); }
-  .btn:disabled { opacity: .45; cursor: not-allowed; }
+/* ---------- Bande défilante ---------- */
+.ticker{background:var(--signal);color:#fff;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(255,255,255,.15)}
+.ticker-track{display:inline-flex;gap:48px;padding-block:14px;font-family:var(--f-display);font-weight:700;font-stretch:85%;font-size:16px;letter-spacing:.02em;animation:scroll 38s linear infinite}
+.ticker-track span{display:inline-flex;align-items:center;gap:48px}
+.ticker-track span::after{content:"";width:6px;height:6px;border-radius:50%;background:#fff;opacity:.6}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
 
-  /* ============ Navigation ============ */
-  .nav {
-    position: fixed; inset: 0 0 auto 0; z-index: 50;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem max(var(--pad), calc((100vw - var(--max)) / 2));
-    color: var(--noir);
-    transition: background .3s ease, box-shadow .3s ease;
-  }
-  .nav.solid { background: rgba(246, 242, 235, .94); backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(27,26,24,.12); }
-  .logo {
-    font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.7rem; text-decoration: none; letter-spacing: .02em; white-space: nowrap; flex: none;
-  }
-  .logo span { color: var(--or-fonce); }
-  .nav ul { display: flex; gap: clamp(1rem, 1.6vw, 1.6rem); list-style: none; margin: 0; padding: 0; align-items: center; }
-  .nav ul a {
-    white-space: nowrap; text-decoration: none; font-size: .76rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase;
-    position: relative; padding-block: .4rem;
-  }
-  .nav ul a::after {
-    content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
-    background: var(--or-fonce); transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
-  }
-  .nav ul a:hover::after { transform: scaleX(1); }
-  .nav ul a[aria-current]::after { transform: scaleX(1); }
-  .nav ul a.cta { background: var(--noir); color: var(--ivoire); padding: .75rem 1.4rem; }
-  .nav ul a.cta::after { display: none; }
-  .nav ul a.cta:hover { background: var(--or-fonce); }
-  .burger {
-    display: none; background: none; border: 1px solid rgba(27,26,24,.5); color: inherit;
-    font: 500 .78rem var(--body); letter-spacing: .2em; text-transform: uppercase; padding: .65rem 1.1rem; cursor: pointer;
-  }
+/* ---------- Sections ---------- */
+section{padding-block:clamp(72px,10vw,128px)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:clamp(40px,6vw,64px)}
+.sec-head h2{font-weight:850;font-stretch:115%;font-size:clamp(36px,5.6vw,72px);letter-spacing:-.035em}
+.sec-head p{color:var(--muted);max-width:48ch;justify-self:end}
+.kicker{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-stretch:80%;font-size:15px;color:var(--signal);margin-bottom:16px;letter-spacing:.02em}
+.kicker::before{content:"";width:22px;height:2px;background:currentColor}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}.sec-head p{justify-self:start}}
 
-  @media (max-width: 1280px) {
-    .burger { display: block; margin-left: auto; }
-    .nav ul {
-      position: absolute; top: 100%; left: 0; right: 0;
-      flex-direction: column; align-items: stretch; gap: 0; padding: .5rem var(--pad) 1.5rem;
-      background: var(--ivoire);
-      box-shadow: 0 12px 24px rgba(27,26,24,.08);
-      display: none;
-    }
-    .nav ul.open { display: flex; }
-    .nav ul li a { display: block; padding: 1rem 0; border-bottom: 1px solid rgba(27,26,24,.12); }
-    .nav ul a::after { display: none; }
-    .nav ul a.cta { margin-top: 1rem; text-align: center; border-bottom: 0; }
-  }
+/* ---------- Audiences ---------- */
+.audience{border-top:2px solid var(--ink)}
+.aud-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.aud{padding:28px 24px 30px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.aud + .aud{padding-left:24px;border-left:1px solid var(--line)}
+.aud .num{font-family:var(--f-display);font-weight:900;font-stretch:110%;font-size:clamp(54px,6.4vw,92px);letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
+.aud .num sup{font-size:.42em;vertical-align:top;position:relative;top:.18em;margin-right:2px;color:var(--signal);letter-spacing:0}
+.aud .what{font-weight:600;line-height:1.35}
+.aud .where{font-size:14px;color:var(--muted);margin-top:auto}
+@media (max-width:900px){.aud-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.aud:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:480px){.aud-grid{grid-template-columns:1fr}.aud,.aud+.aud{padding-left:0;border-left:0}}
 
-  /* ============ Hero ============ */
-  .hero {
-    background: linear-gradient(165deg, var(--ivoire) 0%, #e7e0d5 100%);
-    color: var(--noir);
-    min-height: 100svh;
-    display: flex; align-items: center;
-    padding: 7rem 0 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before { /* halo doré discret */
-    content: ""; position: absolute; right: -8%; top: 50%; width: 80vmin; height: 80vmin;
-    transform: translateY(-50%); border-radius: 50%;
-    background: radial-gradient(circle, rgba(185,154,99,.30), rgba(185,154,99,0) 65%);
-    pointer-events: none;
-  }
-  .hero .wrap {
-    display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; position: relative;
-  }
-  .hero-date {
-    font-family: var(--body); font-size: .85rem; font-weight: 500; letter-spacing: .32em; color: var(--or-fonce);
-    margin-bottom: 1.6rem;
-  }
-  .names {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: clamp(4.2rem, 10.5vw, 10rem);
-    line-height: .9;
-    letter-spacing: -0.015em;
-    font-style: italic;
-  }
-  .names .line { display: block; overflow: hidden; padding-bottom: .14em; }
-  .names .line > span { display: block; animation: rise 1.1s cubic-bezier(.2,.8,.2,1) both; }
-  .names .line:nth-child(1) > span { animation-delay: .1s; }
-  .names .line:nth-child(2) { padding-left: clamp(1rem, 6vw, 5rem); font-style: italic; }
-  .names .line:nth-child(2) > span { animation-delay: .3s; }
-  .names .amp { color: var(--or-fonce); }
-  @keyframes rise { from { transform: translateY(105%); } to { transform: translateY(0); } }
+/* ---------- Profil ---------- */
+.profil{background:var(--surface);border-block:1px solid var(--line)}
+.profil-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(36px,6vw,88px);align-items:center}
+.portrait{position:relative;max-width:440px}
+.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;filter:saturate(.92) contrast(1.04)}
+.portrait .tag{position:absolute;left:-10px;bottom:28px;display:flex;flex-direction:column}
+.portrait .tag b{background:var(--signal);color:#fff;font-family:var(--f-display);font-weight:800;font-stretch:95%;padding:8px 14px;font-size:17px}
+.portrait .tag span{background:var(--ink);color:var(--bg);font-size:13px;font-weight:600;padding:6px 14px;width:fit-content}
+.profil-text .lead{font-family:var(--f-display);font-weight:500;font-stretch:95%;font-size:clamp(24px,2.8vw,36px);line-height:1.2;letter-spacing:-.02em}
+.qualities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 36px;margin-top:44px}
+.q h3{font-weight:750;font-stretch:100%;font-size:20px;letter-spacing:-.01em;display:flex;align-items:baseline;gap:10px}
+.q h3::before{content:"";flex:none;width:10px;height:10px;background:var(--signal);transform:translateY(-1px)}
+.q p{color:var(--muted);margin-top:6px;font-size:16px}
+@media (max-width:820px){.profil-grid{grid-template-columns:1fr}.portrait{max-width:360px}}
+@media (max-width:480px){.qualities{grid-template-columns:1fr}.portrait .tag{left:0}}
 
-  .hero-text { margin-top: 2rem; max-width: 32ch; font-family: var(--display); font-style: italic; font-size: 1.55rem; line-height: 1.35; color: #3b3832; animation: fade 1s .8s both; }
-  .hero .btn { margin-top: 2.2rem; animation: fade 1s 1s both; }
-  .cal { margin-top: 1.4rem; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; animation: fade 1s 1.2s both; }
-  .cal span { color: var(--or-fonce); font-weight: 500; }
-  .cal a { color: var(--noir); text-decoration: none; border-bottom: 1px solid var(--noir); padding-bottom: .2rem; transition: color .3s, border-color .3s; }
-  .cal a:hover { color: var(--or-fonce); border-color: var(--or-fonce); }
-  .hero-place { margin-top: 2.2rem; font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); animation: fade 1s 1.1s both; }
-  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+/* ---------- Mur d'écrans ---------- */
+.wall{background:var(--studio);color:var(--studio-ink)}
+.wall .sec-head p{color:var(--studio-muted)}
+.wall .kicker{color:#8C9CFF}
+.screens{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.screen{position:relative;display:block;text-decoration:none;border-radius:6px;overflow:hidden;background:#11131B;aspect-ratio:4/5;outline-offset:4px}
+.screen img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1),filter .4s;filter:saturate(.85) brightness(.82)}
+.screen:hover img,.screen:focus-visible img{transform:scale(1.05);filter:saturate(1.05) brightness(1)}
+.screen::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(6,7,11,.92) 100%)}
+.screen .src{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--f-display);font-stretch:80%;font-weight:700;font-size:12px;letter-spacing:.08em;background:rgba(6,7,11,.7);padding:4px 8px;border-radius:3px;backdrop-filter:blur(6px)}
+.screen .cap{position:absolute;left:16px;right:16px;bottom:16px;z-index:2}
+.screen .cap b{display:block;font-family:var(--f-display);font-weight:800;font-stretch:105%;font-size:22px;letter-spacing:-.02em}
+.screen .cap span{font-size:14px;color:var(--studio-muted)}
+.screen .play{position:absolute;top:50%;left:50%;z-index:2;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);display:grid;place-items:center;transition:background .3s,transform .3s}
+.screen .play::before{content:"";border-left:15px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.screen:hover .play{background:var(--signal);transform:scale(1.08)}
+@media (max-width:900px){.screens{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-  /* L'arche : motif repris dans tout le site (arcades de l'abbaye) */
-  .arch {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    aspect-ratio: 3 / 4.4;
-    margin-inline: auto;
-    border-radius: 999px 999px 0 0;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 50% 60%, #fbf3e0 0 12%, rgba(251,243,224,0) 13%),
-      linear-gradient(180deg, #e6dfd3 0%, #d9ccb4 55%, #c4a977 100%);
-    outline: 1px solid rgba(122,92,44,.65);
-    outline-offset: 12px;
-    animation: archIn 1.3s .2s cubic-bezier(.2,.8,.2,1) both;
-  }
-  @keyframes archIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
-  .arch img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: 62% 35%; }
-  .arch .ph {
-    position: absolute; inset: auto 0 7% 0; text-align: center;
-    font-family: var(--display); font-style: italic; font-size: 1.25rem; color: rgba(27,26,24,.7);
-  }
+/* ---------- Conducteur ---------- */
+.rundown{border-top:2px solid var(--ink)}
+.slot{display:grid;grid-template-columns:150px minmax(0,1.1fr) minmax(0,1.4fr);gap:28px 40px;padding-block:36px;border-bottom:1px solid var(--line)}
+.slot .when{font-family:var(--f-display);font-weight:700;font-stretch:85%;font-size:18px;font-variant-numeric:tabular-nums;color:var(--muted);display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.live{display:inline-flex;align-items:center;gap:7px;background:var(--tally);color:#fff;font-size:12px;letter-spacing:.1em;font-weight:800;padding:4px 9px 4px 8px;border-radius:3px}
+.live::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff}
+.slot h3{font-weight:800;font-stretch:108%;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.025em}
+.slot .org{margin-top:8px;font-weight:600;color:var(--signal)}
+.slot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.slot li{position:relative;padding-left:22px;color:var(--muted)}
+.slot li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:1.5px;background:var(--ink);opacity:.5}
+.slot li strong{color:var(--ink);font-weight:600}
+@media (max-width:900px){.slot{grid-template-columns:110px minmax(0,1fr)}.slot ul{grid-column:2}}
+@media (max-width:560px){.slot{grid-template-columns:1fr;gap:14px}.slot ul{grid-column:auto;margin-top:6px}.slot .when{flex-direction:row;align-items:center}}
 
-  @media (max-width: 860px) {
-    .hero { padding-top: 6rem; }
-    .hero .wrap { grid-template-columns: 1fr; }
-    .arch { max-width: 280px; margin-top: 1.5rem; }
-  }
+/* ---------- Compétences ---------- */
+.kit{background:var(--surface);border-block:1px solid var(--line)}
+.kit-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,64px)}
+.kit h3{font-weight:800;font-stretch:105%;font-size:22px;letter-spacing:-.015em;padding-bottom:14px;border-bottom:2px solid var(--ink);margin-bottom:20px}
+.skills{list-style:none;margin:0;padding:0}
+.skills li{padding-block:11px;border-bottom:1px solid var(--line);font-weight:500}
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.tools span{font-size:15px;font-weight:500;padding:8px 14px;border-radius:999px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line)}
+.forms{display:grid;gap:18px}
+.forms div b{display:block;font-weight:600}
+.forms div span{font-size:15px;color:var(--muted)}
+@media (max-width:900px){.kit-grid{grid-template-columns:1fr}}
 
-  /* ============ Compte à rebours ============ */
-  .count { background: var(--noir); color: var(--ivoire); padding: clamp(2.5rem, 5vw, 4rem) 0; }
-  .count .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 3rem; }
-  .count h2 { font-family: var(--display); font-weight: 500; font-style: italic; font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.1; max-width: 14ch; color: var(--or); }
-  .clock { display: flex; gap: clamp(1rem, 3.5vw, 3rem); }
-  .clock div { text-align: center; min-width: 4.2rem; }
-  .clock b {
-    display: block; font-family: var(--display); font-weight: 500; font-size: clamp(2.8rem, 7vw, 5.4rem); line-height: 1;
-    font-variant-numeric: lining-nums tabular-nums; color: var(--ivoire);
-  }
-  .clock small { font-size: .72rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--or); }
-  .count-done { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 3.2rem); font-style: italic; color: var(--or); }
-
-  /* ============ Histoire ============ */
-  .story { padding: clamp(5rem, 11vw, 9rem) 0; }
-  .story .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
-  .story .h2 { max-width: 14ch; }
-  .story p { max-width: 52ch; color: #38352f; }
-  .story p + p { margin-top: 1.1rem; }
-  .sign { font-family: var(--display); font-style: italic; font-size: 2rem; margin-top: 1.8rem; color: var(--or-fonce); }
-
-  .path { margin-top: 3rem; position: relative; padding-left: 2rem; border-left: 1px solid var(--or); display: grid; gap: 2rem; }
-  .path > div { position: relative; }
-  .path > div::before {
-    content: ""; position: absolute; left: calc(-2rem - 6px); top: .6rem; width: 11px; height: 11px;
-    border-radius: 50%; background: var(--ivoire); border: 1px solid var(--or-fonce);
-  }
-  .path time { font-family: var(--display); font-size: 1.7rem; font-weight: 500; display: block; line-height: 1.2; }
-  .path span { color: var(--muted); font-size: .98rem; }
-
-  @media (max-width: 860px) { .story .wrap { grid-template-columns: 1fr; } }
-
-  /* ============ Programme ============ */
-  .prog { background: var(--greige); padding: clamp(5rem, 11vw, 9rem) 0; }
-  .prog .head { max-width: 36rem; margin-bottom: clamp(2.5rem, 6vw, 5rem); }
-  .prog .head p { margin-top: 1rem; color: #3b3832; }
-  .steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(27,26,24,.35); }
-  .steps li {
-    display: grid; grid-template-columns: minmax(8rem, 14rem) 1fr; gap: 1rem 3rem;
-    padding: 2.2rem 0; border-bottom: 1px solid rgba(27,26,24,.35);
-    align-items: baseline;
-  }
-  .steps .when { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.4rem; color: var(--or-fonce); }
-  .steps h3 { font-family: var(--display); font-weight: 500; font-size: clamp(2rem, 3.8vw, 3rem); line-height: 1.05; }
-  .steps p { margin-top: .5rem; max-width: 46ch; color: #3b3832; }
-  @media (max-width: 640px) { .steps li { grid-template-columns: 1fr; gap: .4rem; padding: 1.6rem 0; } }
-
-  /* ============ Lieux ============ */
-  .places { background: var(--noir); color: var(--ivoire); padding: clamp(5rem, 11vw, 9rem) 0; }
-  .places .h2 { max-width: 14ch; }
-  .arcade { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.25rem, 3vw, 3rem); margin-top: clamp(3rem, 7vw, 5rem); }
-  .bay {
-    display: flex; flex-direction: column;
-    border: 1px solid rgba(185,154,99,.75);
-    border-radius: 999px 999px 0 0;
-    padding: 10px 10px 2.8rem;
-    text-align: center;
-    background: linear-gradient(180deg, rgba(185,154,99,.14), rgba(185,154,99,0) 60%);
-  }
-  .bay .pic { aspect-ratio: 4 / 4.6; overflow: hidden; border-radius: 999px 999px 0 0; background: var(--noir-2); }
-  .bay .pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
-  .bay:hover .pic img { transform: scale(1.05); }
-  .bay .txt { display: flex; flex-direction: column; align-items: center; padding: 1.9rem 1rem 0; flex: 1; }
-  .bay .kind { font-size: .75rem; color: var(--or); font-weight: 500; letter-spacing: .24em; text-transform: uppercase; }
-  .bay h3 { font-family: var(--display); font-weight: 500; font-size: clamp(1.9rem, 2.8vw, 2.5rem); line-height: 1.05; margin: .7rem 0 .4rem; }
-  .bay p { color: rgba(246,242,235,.75); }
-  .bay .txt p:not(.kind) { margin-bottom: 1.4rem; }
-  .bay a.link {
-    display: inline-block; margin-top: auto; color: var(--ivoire); font-size: .78rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; text-decoration: none;
-    border-bottom: 1px solid var(--or); padding-bottom: .3rem;
-  }
-  .bay a.link:hover { color: var(--or); }
-  .bay .soon { display: inline-block; margin-top: auto; font-size: .95rem; color: rgba(246,242,235,.55); font-style: italic; }
-  @media (max-width: 960px) { .arcade { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; } }
-
-  /* ============ Où dormir ? ============ */
-  .stay { background: var(--ivoire); padding: clamp(5rem, 11vw, 9rem) 0; }
-  .stay-head { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(1.5rem, 6vw, 6rem); align-items: end; margin-bottom: clamp(2rem, 4vw, 3rem); }
-  .stay .h2 { max-width: 10ch; }
-  .stay-intro { max-width: 52ch; font-size: 1.1rem; color: #38352f; }
-  .stay-filters { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1.2rem; }
-  .stay-filters button { font: 500 .7rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; background: transparent; color: var(--noir); border: 1px solid var(--noir); padding: .85rem 1.1rem; cursor: pointer; border-radius: 2px; transition: background .3s, color .3s, border-color .3s; }
-  .stay-filters button:hover { border-color: var(--or-fonce); color: var(--or-fonce); }
-  .stay-filters button.is-on { background: var(--noir); color: var(--ivoire); border-color: var(--noir); }
-  .stay-filters .n { opacity: .6; margin-left: .35em; }
-  .stay-filters .n:empty { display: none; }
-  .stay-mapbox { border: 1px solid rgba(27,26,24,.25); border-radius: 2px; overflow: hidden; background: var(--greige); }
-  .stay-map { height: clamp(380px, 64vh, 620px); width: 100%; background: var(--greige); font-family: var(--body); }
-  .stay-map .leaflet-tile-pane { filter: grayscale(.6) sepia(.18) contrast(.96) brightness(1.02); }
-  .stay-map.is-failed { display: grid; place-items: center; padding: 2rem; }
-  .stay-fail { text-align: center; max-width: 30ch; color: #38352f; }
-  .leaflet-container img { max-width: none !important; }
-  .stay-meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: .8rem 0 0; font-size: .85rem; color: var(--muted); }
-  .stay-meta p { margin: 0; }
-  .stay-count { font-weight: 500; letter-spacing: .08em; }
-  /* marqueurs */
-  .mk-wrap { background: none; border: 0; }
-  .mk { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--ivoire); color: var(--noir); border: 1.5px solid var(--noir); box-shadow: 0 3px 10px rgba(27,26,24,.3); transition: transform .25s, background .25s, color .25s, border-color .25s; }
-  .mk svg { width: 20px; height: 20px; }
-  .mk:hover, .mk.is-active { background: var(--noir); color: var(--or); border-color: var(--or); transform: scale(1.12); }
-  .mk-domaine { width: 52px; height: 52px; background: var(--noir); color: var(--or); border: 2px solid var(--or); box-shadow: 0 0 0 5px rgba(185,154,99,.28), 0 4px 14px rgba(27,26,24,.4); }
-  .mk-domaine svg { width: 32px; height: 24px; }
-  .mk-domaine:hover { transform: none; background: var(--noir); }
-  .mo-tip { background: var(--noir); color: var(--ivoire); border: 0; border-radius: 2px; font: 500 .7rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; padding: .55rem .8rem; box-shadow: none; }
-  .mo-tip.leaflet-tooltip-top::before { border-top-color: var(--noir); }
-  /* fiche (popup) */
-  .mo-popup .leaflet-popup-content-wrapper { background: var(--ivoire); color: var(--ink); border-radius: 2px; box-shadow: 0 10px 30px rgba(27,26,24,.28); padding: 0; }
-  .mo-popup .leaflet-popup-content { margin: 0; width: auto !important; font-family: var(--body); }
-  .mo-popup .leaflet-popup-tip { background: var(--ivoire); }
-  .mo-popup a.leaflet-popup-close-button { color: var(--noir); top: 6px; right: 6px; }
-  .pop { padding: 1.3rem 1.3rem 1.2rem; }
-  .pop-photo { display: block; width: calc(100% + 2.6rem); max-width: none !important; margin: -1.3rem -1.3rem 1rem; height: 130px; object-fit: cover; }
-  .pop-kind { margin: 0 1.2rem .4rem 0; font: 500 .66rem/1.2 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--or-fonce); }
-  .pop h4 { margin: 0 0 .5rem; font: 500 1.45rem/1.15 var(--display); }
-  .pop-addr { margin: 0; font-size: .92rem; color: #38352f; line-height: 1.45; }
-  .pop-dist { margin: .35rem 0 0; font-size: .85rem; color: var(--muted); }
-  .pop-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
-  .pop-btn { flex: 1 1 auto; text-align: center; font: 500 .64rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; text-decoration: none; background: var(--noir); color: var(--ivoire) !important; border: 1px solid var(--noir); padding: .8rem .9rem; border-radius: 2px; transition: background .3s, border-color .3s; }
-  .pop-btn:hover { background: var(--or-fonce); border-color: var(--or-fonce); }
-  .pop-btn--ghost { background: transparent; color: var(--noir) !important; }
-  .pop-btn--ghost:hover { background: var(--noir); border-color: var(--noir); color: var(--ivoire) !important; }
-  /* liste */
-  .stay-list { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .stay-card { background: #fbf9f4; border: 1px solid rgba(27,26,24,.18); border-radius: 2px; padding: 1.5rem; display: flex; flex-direction: column; transition: border-color .3s, box-shadow .3s, transform .3s; }
-  .stay-card[hidden] { display: none; }
-  .stay-card.is-active { border-color: var(--or-fonce); box-shadow: 0 0 0 1px var(--or-fonce); }
-  .stay-photo { display: block; width: calc(100% + 3rem); max-width: none; margin: -1.5rem -1.5rem 1.1rem; height: 150px; object-fit: cover; }
-  .stay-kind { margin: 0 0 .5rem; font: 500 .68rem/1.2 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--or-fonce); }
-  .stay-card h3 { margin: 0 0 .7rem; font: 500 1.6rem/1.12 var(--display); }
-  .stay-addr { margin: 0; font-size: .95rem; color: #38352f; line-height: 1.5; }
-  .stay-dist { margin: .45rem 0 0; font-size: .88rem; color: var(--muted); }
-  .stay-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.1rem; margin-top: auto; padding-top: 1.3rem; }
-  .stay-focus, .stay-link { font: 500 .68rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--noir); background: none; border: 0; border-bottom: 1px solid var(--noir); padding: 0 0 .25rem; cursor: pointer; text-decoration: none; transition: color .3s, border-color .3s; }
-  .stay-focus:hover, .stay-link:hover { color: var(--or-fonce); border-color: var(--or-fonce); }
-  .stay-book { margin-left: auto; font: 500 .66rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; text-decoration: none; background: var(--noir); color: var(--ivoire); padding: .75rem 1.05rem; border-radius: 2px; transition: background .3s; }
-  .stay-book:hover { background: var(--or-fonce); }
-  .stay-empty { margin-top: 2rem; color: var(--muted); }
-  .stay-note { margin-top: 1.8rem; font-size: .85rem; color: var(--muted); max-width: 60ch; }
-  @media (max-width: 960px) { .stay-list { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 860px) { .stay-head { grid-template-columns: 1fr; align-items: start; } }
-  @media (max-width: 600px) {
-    .stay-list { grid-template-columns: 1fr; }
-    .stay-filters { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad); padding-bottom: .4rem; scrollbar-width: none; }
-    .stay-filters::-webkit-scrollbar { display: none; }
-    .stay-filters button { flex: 0 0 auto; white-space: nowrap; }
-    .stay-map { height: 420px; }
-  }
-
-  /* ============ Souvenirs ============ */
-  .memo { background: var(--ivoire); padding: clamp(5rem, 11vw, 9rem) 0; text-align: center; }
-  .memo-eyebrow { margin: 0 0 1rem; font: 500 .72rem/1 var(--body); letter-spacing: .28em; text-transform: uppercase; color: var(--or-fonce); }
-  .memo .h2 { max-width: none; margin-inline: auto; }
-  .memo-text { max-width: 46ch; margin: 1.8rem auto 0; font-size: 1.1rem; color: #38352f; }
-  .memo-text p + p { margin-top: 1rem; }
-  .memo-cta { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; margin-top: 2.8rem; }
-  .memo-btn { text-decoration: none; display: inline-flex; align-items: center; gap: 1.1rem; padding: 1.25rem 2.6rem; background: var(--noir); color: var(--ivoire); border: 1px solid var(--noir); border-radius: 0; cursor: pointer;
-              font: 500 .78rem/1 var(--body); letter-spacing: .24em; text-transform: uppercase; transition: background .35s, border-color .35s, gap .35s; }
-  .memo-btn i { font-style: normal; font-size: 1.05rem; letter-spacing: 0; color: var(--or); transition: transform .35s; }
-  .memo-btn:hover { background: var(--or-fonce); border-color: var(--or-fonce); } .memo-btn:hover i { transform: translateX(5px); color: var(--ivoire); }
-  .memo-btn:focus-visible { outline: 2px solid var(--or-fonce); outline-offset: 4px; }
-  .memo-sub { margin: 0; font: 500 .68rem/1.5 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-  .btn--ghost { background: transparent; color: var(--noir); border: 1px solid var(--noir); }
-  .btn--ghost:hover { background: var(--noir); color: var(--ivoire); }
-  .memo-note { max-width: 44ch; margin: 1.4rem auto 0; padding: 1rem 1.2rem; background: var(--ivoire); border-left: 2px solid var(--or); text-align: left; font-size: .95rem; color: #38352f; }
-  .memo-panel { max-width: 36rem; margin: 2.4rem auto 0; padding: 1.6rem; background: var(--ivoire); border: 1px solid rgba(27,26,24,.2); text-align: left; }
-  .memo-summary { margin: 0 0 1rem; font-weight: 500; }
-  .memo-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem; }
-  .memo-actions .btn, .memo-panel > .btn { width: 100%; }
-  .memo-link { background: none; border: 0; border-bottom: 1px solid var(--noir); padding: 0 0 .2rem; font: 500 .72rem/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--noir); cursor: pointer; }
-  .memo-link:hover { color: var(--or-fonce); border-color: var(--or-fonce); }
-  .memo-bar { height: 6px; margin-top: 1.2rem; background: var(--greige); overflow: hidden; }
-  .memo-bar span { display: block; height: 100%; width: 0; background: var(--or-fonce); transition: width .4s ease; }
-  .memo-status { margin: .8rem 0 0; font-size: .95rem; color: #38352f; }
-  .memo-warn { margin: .6rem 0 0; font-size: .85rem; color: var(--alerte); }
-  .memo-done { margin: 1rem 0; color: var(--or-fonce); font-weight: 500; }
-  .memo-panel > .btn { margin-top: 1rem; }
-  .memo-list { list-style: none; margin: 1rem 0 0; padding: 0; max-height: 14rem; overflow: auto; font-size: .85rem; }
-  .memo-item { display: flex; justify-content: space-between; gap: 1rem; padding: .4rem 0; border-top: 1px solid rgba(27,26,24,.1); }
-  .memo-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-  .memo-state { flex: none; color: var(--muted); }
-  .memo-item.is-err .memo-state { color: var(--alerte); }
-  .memo-gallery { margin-top: clamp(3.5rem, 8vw, 6rem); padding-top: 3rem; border-top: 1px solid rgba(27,26,24,.2); }
-  .memo-gallery-title { margin: 0; font: 500 clamp(1.8rem, 3.4vw, 2.5rem)/1.1 var(--display); }
-  .memo-gallery-empty { margin-top: 1rem; color: var(--muted); font-style: italic; }
-  .memo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; margin-top: 2rem; }
-  .memo-fig { margin: 0; } .memo-fig img, .memo-fig video { width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-  .memo-test { max-width: 36rem; margin: 2.5rem auto 0; padding: 1.4rem; border: 1px dashed var(--or-fonce); text-align: left; font-size: .9rem; }
-  @media (max-width: 600px) { .memo-btn { width: 100%; justify-content: center; padding-inline: 1.2rem; } }
-
-  /* ============ Cagnotte ============ */
-  .gift { background: var(--greige); padding: clamp(5rem, 11vw, 9rem) 0; }
-  .gift .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
-  .gift .h2 { max-width: 12ch; }
-  .gift p { max-width: 46ch; color: #38352f; font-size: 1.1rem; }
-  .gift .btn { margin-top: 2rem; }
-  .gift .wrap { align-items: start; }
-  .gift .h2 { max-width: 10ch; }
-  .gift-body p + p { margin-top: 1.1rem; }
-  .gift .gift-body .sign { margin-top: 2rem; font-size: 2rem; color: var(--or-fonce); }
-  @media (min-width: 861px) { .gift-head { position: sticky; top: 7rem; } }
-  .iban-line { margin: 2rem 0 2.2rem; max-width: 34rem; background: var(--ivoire); border: 1px solid rgba(27,26,24,.25); padding: 1.3rem 1.5rem; display: grid; grid-template-columns: 1fr auto; gap: .5rem 1rem; align-items: end; }
-  .iban-label { grid-column: 1 / -1; font: 500 .7rem/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--or-fonce); }
-  .iban-val { font: 400 1.1rem/1.4 var(--body); color: var(--ink); overflow-wrap: anywhere; letter-spacing: .02em; }
-  .iban-copy { font: 500 .68rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; background: none; border: 1px solid var(--noir); color: var(--noir); padding: .6rem .9rem; cursor: pointer; border-radius: 0; transition: background .3s, color .3s; }
-  .iban-copy:hover { background: var(--noir); color: var(--ivoire); }
-
-  /* ============ Accès au site par code ============ */
-  .gate { display: none; position: fixed; inset: 0; z-index: 1000; place-items: center; padding: 1.5rem; background: radial-gradient(ellipse at 70% 20%, #eadfd8 0%, var(--ivoire) 55%); overflow-y: auto; }
-  html.locked .gate { display: grid; }
-  html.locked, html.locked body { overflow: hidden; }
-  html.locked body > *:not(#gate) { display: none !important; }
-  .gate-box { width: 100%; max-width: 26rem; text-align: center; }
-  .gate-mono { font-family: var(--display); font-style: italic; font-size: 1.7rem; letter-spacing: .02em; }
-  .gate-mono span { color: var(--or-fonce); }
-  .gate-names { font-family: var(--display); font-weight: 500; font-style: italic; font-size: clamp(2.8rem, 9vw, 4.2rem); line-height: 1; margin-top: 1.6rem; }
-  .gate-names em { color: var(--or-fonce); }
-  .gate-date { margin-top: 1.1rem; font: 500 .8rem/1 var(--body); letter-spacing: .32em; color: var(--or-fonce); }
-  .gate-box label { display: block; margin: 2.6rem 0 .9rem; font-family: var(--display); font-style: italic; font-size: 1.3rem; color: #3b3832; }
-  .gate-box input { width: 100%; text-align: center; font: 400 1.05rem var(--body); letter-spacing: .1em; padding: 1rem; background: var(--ivoire); border: 1px solid var(--noir); border-radius: 0; color: var(--ink); }
-  .gate-box input:focus { outline: none; border-color: var(--or-fonce); box-shadow: 0 0 0 1px var(--or-fonce); }
-  .gate-box .btn { margin-top: 1rem; width: 100%; padding: 1.05rem 1.5rem; }
-  .gate-msg { min-height: 1.4em; margin-top: 1rem; font-size: .95rem; color: var(--alerte); }
-  @media (max-width: 860px) { .gift .wrap { grid-template-columns: 1fr; } }
-
-  /* ============ RSVP ============ */
-  .rsvp { background: var(--greige); padding: clamp(5rem, 11vw, 9rem) 0; }
-  .rsvp .wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
-  .rsvp .intro p { margin-top: 1.3rem; max-width: 36ch; color: #38352f; }
-  .notice {
-    margin-top: 1.8rem; padding: 1rem 1.2rem; border-left: 2px solid var(--or); background: rgba(185,154,99,.16);
-    font-size: .98rem; max-width: 38ch;
-  }
-  form { display: grid; gap: 1.8rem; }
-  fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 1.8rem; min-width: 0; }
-  fieldset:disabled { opacity: .5; }
-  .field label, .field legend { display: block; font-weight: 500; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; margin-bottom: .4rem; padding: 0; }
-  .field input[type=text], .field input[type=number], .field textarea {
-    width: 100%; font: inherit; color: inherit; background: transparent;
-    border: 0; border-bottom: 1px solid rgba(27,26,24,.5); padding: .6rem 0; border-radius: 0;
-    transition: border-color .2s ease;
-  }
-  .field input:focus, .field textarea:focus { outline: none; border-color: var(--or-fonce); border-bottom-width: 2px; }
-  .field textarea { resize: vertical; min-height: 5rem; }
-  .choices { display: flex; flex-wrap: wrap; gap: .75rem; }
-  .choices input { position: absolute; opacity: 0; pointer-events: none; }
-  .choices label {
-    margin: 0; padding: .85rem 1.4rem; border: 1px solid var(--noir); border-radius: 0;
-    font-size: .8rem; letter-spacing: .12em; cursor: pointer; transition: background .2s ease, color .2s ease;
-  }
-  .choices input:checked + label { background: var(--noir); color: var(--ivoire); }
-  .choices input:focus-visible + label { outline: 2px solid var(--or-fonce); outline-offset: 3px; }
-  .status { min-height: 1.5rem; font-weight: 500; }
-  .status.ok { color: #2d6a3e; }
-  .status.err { color: var(--alerte); }
-  .rsvp .btn { justify-self: start; }
-  [hidden] { display: none !important; }
-  .ask-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; }
-  .ask-row .inline { flex: 1 1 14rem; }
-  .ask-row .inline.small { flex: 0 1 9rem; }
-  .field .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .field input::placeholder, .field textarea::placeholder { color: rgba(27,26,24,.45); }
-
-  @media (max-width: 860px) { .rsvp .wrap { grid-template-columns: 1fr; } }
-
-  /* ============ FAQ ============ */
-  .faq { background: var(--rose); padding: clamp(5rem, 10vw, 8rem) 0; }
-  .faq .wrap { max-width: 860px; }
-  .faq .h2 { margin-bottom: 2.5rem; }
-  .faq .faq-link { color: var(--or-fonce); text-decoration: none; border-bottom: 1px solid var(--or-fonce); transition: color .3s, border-color .3s; }
-  .faq .faq-link:hover { color: var(--noir); border-color: var(--noir); }
-  details { border-bottom: 1px solid rgba(27,26,24,.3); }
-  details:first-of-type { border-top: 1px solid rgba(27,26,24,.3); }
-  summary {
-    list-style: none; cursor: pointer; padding: 1.5rem 0; display: flex; justify-content: space-between; gap: 1rem; align-items: center;
-    font-family: var(--display); font-weight: 500; font-size: clamp(1.45rem, 2.6vw, 1.85rem); line-height: 1.2;
-  }
-  summary::-webkit-details-marker { display: none; }
-  summary::after {
-    content: "+"; font-family: var(--body); font-size: 1.8rem; font-weight: 300; color: var(--or-fonce);
-    transition: transform .25s ease; flex: none;
-  }
-  details[open] summary::after { transform: rotate(45deg); }
-  details p { padding: 0 3rem 1.6rem 0; color: #38352f; max-width: 60ch; }
-
-  /* ============ Pied de page ============ */
-  footer { background: var(--noir); color: var(--ivoire); text-align: center; padding: 4.5rem var(--pad) 3rem; }
-  footer .logo { font-size: 2.6rem; }
-  footer .logo span { color: var(--or); }
-  footer p { margin-top: .8rem; color: rgba(246,242,235,.7); }
-  footer .date { font-size: .8rem; font-weight: 500; letter-spacing: .32em; color: var(--or); }
-
-
-  /* ============ Finitions : détails d'élégance ============ */
-  :root { interpolate-size: allow-keywords; }
-  ::selection { background: var(--or); color: var(--noir); }
-  h1, h2, h3 { text-wrap: balance; }
-  p { text-wrap: pretty; }
-
-  /* grain de papier, très discret */
-  body::before {
-    content: ""; position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: .055;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  }
-
-  /* petits titres de section */
-  main p.eyebrow.eyebrow { display: flex; align-items: center; gap: .9rem; max-width: none; margin: 0 0 1.4rem; font: 500 .72rem/1 var(--body); letter-spacing: .28em; text-transform: uppercase; color: var(--or-fonce); }
-  .eyebrow::before { content: ""; width: 2.4rem; height: 1px; background: currentColor; opacity: .75; }
-  main .places p.eyebrow.eyebrow { color: var(--or); }
-  .memo-eyebrow { display: flex; justify-content: center; align-items: center; gap: .9rem; }
-  .memo-eyebrow::before, .memo-eyebrow::after { content: ""; width: 2.4rem; height: 1px; background: currentColor; opacity: .75; }
-  .stay-title .h2 { max-width: 10ch; }
-
-  /* hero : halo qui respire + repère de défilement */
-  .hero::before { animation: breathe 10s ease-in-out infinite; }
-  @keyframes breathe { 0%, 100% { opacity: .85; transform: translateY(-50%) scale(1); } 50% { opacity: 1; transform: translateY(-50%) scale(1.07); } }
-  .scroll-cue {
-    position: absolute; left: 0; right: 0; bottom: 1.5rem; margin-inline: auto; width: max-content;
-    display: flex; flex-direction: column; align-items: center; gap: .8rem;
-    font: 500 .64rem/1 var(--body); letter-spacing: .32em; text-transform: uppercase; color: var(--muted); text-decoration: none;
-    animation: fade 1s 1.8s both;
-  }
-  .scroll-cue::after { content: ""; width: 1px; height: 2.8rem; background: linear-gradient(var(--or-fonce), rgba(122,92,44,0)); transform-origin: top; animation: cue 2.6s 2.2s ease-in-out infinite; }
-  @keyframes cue { 0% { transform: scaleY(0); opacity: 0; } 30% { opacity: 1; } 70% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
-  @media (max-width: 860px), (max-height: 640px) { .scroll-cue { display: none; } }
-
-  /* compte à rebours : filets dorés */
-  .count { border-top: 1px solid rgba(185,154,99,.55); }
-  .clock div + div { border-left: 1px solid rgba(185,154,99,.35); padding-left: clamp(1rem, 3.5vw, 3rem); }
-
-  /* programme et lieux : petites interactions */
-  .steps li { transition: padding-left .55s cubic-bezier(.2,.8,.2,1); }
-  .steps li:hover { padding-left: 1rem; }
-  .steps li:hover h3 { color: var(--or-fonce); }
-  .steps h3 { transition: color .4s ease; }
-  .bay { transition: transform .7s cubic-bezier(.2,.8,.2,1), border-color .4s ease; }
-  .bay:hover { transform: translateY(-8px); border-color: var(--or); }
-
-  /* FAQ : ouverture en douceur (navigateurs récents) */
-  @supports (interpolate-size: allow-keywords) {
-    details::details-content { height: 0; overflow: clip; transition: height .45s cubic-bezier(.2,.8,.2,1), content-visibility .45s allow-discrete; }
-    details[open]::details-content { height: auto; }
-  }
-
-  /* écran d'entrée et pied de page : l'arche, motif du site */
-  .gate-box { animation: fade 1.2s .1s both; }
-  .gate-box::before { content: ""; display: block; width: 54px; height: 74px; margin: 0 auto 1.6rem; border: 1px solid var(--or-fonce); border-bottom: 0; border-radius: 999px 999px 0 0; opacity: .8; }
-  footer::before { content: ""; display: block; width: 38px; height: 52px; margin: 0 auto 1.8rem; border: 1px solid var(--or); border-bottom: 0; border-radius: 999px 999px 0 0; opacity: .85; }
-
-  /* apparition douce au défilement (activée par le script, désactivée si mouvement réduit) */
-  .js-reveal [data-reveal] { opacity: 0; translate: 0 28px; transition: opacity 1.1s cubic-bezier(.2,.7,.2,1) var(--d, 0s), translate 1.1s cubic-bezier(.2,.7,.2,1) var(--d, 0s); }
-  .js-reveal [data-reveal].in { opacity: 1; translate: 0 0; }
-
-  /* ============ Mouvement réduit ============ */
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-  }
+/* ---------- Contact ---------- */
+.contact{background:var(--studio);color:var(--studio-ink);position:relative;overflow:hidden}
+.contact .kicker{color:#8C9CFF}
+.contact h2{font-weight:900;font-stretch:125%;font-size:clamp(44px,8.6vw,124px);letter-spacing:-.05em;line-height:.9;max-width:12ch}
+.contact .intro{margin-top:28px;color:var(--studio-muted);font-size:19px;max-width:46ch}
+.lines{margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.16)}
+.line{padding:24px 24px 24px 0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.line + .line{padding-left:24px;border-left:1px solid rgba(255,255,255,.16)}
+.line small{font-size:14px;color:var(--studio-muted)}
+.line a{font-family:var(--f-display);font-weight:700;font-stretch:95%;font-size:clamp(19px,2vw,24px);text-decoration:none;overflow-wrap:anywhere}
+.line a:hover{color:#8C9CFF}
+.copy{align-self:flex-start;margin-top:6px;font:600 13px var(--f-body);color:var(--studio-muted);background:transparent;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 12px;cursor:pointer}
+.copy:hover{color:var(--studio-ink);border-color:var(--studio-ink)}
+@media (max-width:800px){.lines{grid-template-columns:1fr}.line+.line{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.16)}}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-top:80px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:14px;color:var(--studio-muted)}
 </style>
-<script>document.documentElement.classList.add("locked");</script>
 </head>
+<body>
 
-<body id="top">
-<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-names">
-  <form class="gate-box" id="gate-form" autocomplete="off">
-    <p class="gate-mono">M <span>&amp;</span> O</p>
-    <p class="gate-names" id="gate-names">Margaux<br><em>&amp;</em> Odran</p>
-    <p class="gate-date">XVIII.IX.MMXXVII</p>
-    <label for="gate-pwd">Veuillez saisir le code figurant sur votre invitation</label>
-    <input type="password" id="gate-pwd" autocomplete="off" autocapitalize="off" spellcheck="false" required>
-    <button type="submit" class="btn" id="gate-go">Entrer</button>
-    <p class="gate-msg" id="gate-msg" role="status" aria-live="polite"></p>
-  </form>
-</div>
-
-
-<!-- ============ NAVIGATION ============ -->
-<header class="nav" id="nav">
-  <a class="logo" href="#top" aria-label="Retour en haut">M <span>&amp;</span> O</a>
-  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
-  <nav aria-label="Navigation principale">
-    <ul id="menu">
-      <li><a href="#histoire">Notre histoire</a></li>
-      <li><a href="#programme">Le grand jour</a></li>
-      <li><a href="#lieux">Les lieux</a></li>
-      <li><a href="#dormir">Où dormir ?</a></li>
-      <li><a href="#cagnotte">Cagnotte</a></li>
-      <li><a href="#souvenirs">Souvenirs</a></li>
-      <li><a href="#infos">Informations</a></li>
-      <li><a class="cta" href="#rsvp">Répondre</a></li>
-    </ul>
-  </nav>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="mark" href="#antenne" aria-label="Retour en haut"><i></i>OL</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#profil">Profil</a>
+      <a href="#resultats">Résultats</a>
+      <a href="#videos">Vidéos</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#competences">Compétences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-signal" href="https://oleguedey-ctrl.github.io/CV%20ODRAN%20LEGUEDEY.pdf" target="_blank" rel="noopener">Télécharger mon CV</a>
+  </div>
 </header>
 
 <main>
-
-<!-- ============ HERO ============ -->
-<section class="hero" aria-labelledby="titre">
+<!-- ANTENNE -->
+<section class="onair" id="antenne" aria-label="Présentation">
+  <div class="poster"></div>
+  <video autoplay muted loop playsinline preload="auto" poster="">
+    <source src="https://oleguedey-ctrl.github.io/video%20HOME%20PAGE.mp4" type="video/mp4">
+  </video>
+  <div class="frame" aria-hidden="true"></div>
   <div class="wrap">
-    <div>
-      <p class="hero-date">XVIII.IX.MMXXVII</p>
-      <h1 class="names" id="titre">
-        <span class="line"><span>Margaux</span></span>
-        <span class="line"><span><span class="amp">&amp;</span> Odran</span></span>
-      </h1>
-      <p class="hero-text">Une journée pour célébrer l’amour, la famille et les belles histoires.</p>
-      <a class="btn" href="#rsvp">Confirmer ma présence</a>
-      <p class="hero-place">Le 18 septembre 2027, à Orléans</p>
-      <p class="cal"><span>Ajouter à mon agenda</span>
-        <a href="mariage-margaux-odran.ics" download>Apple / Outlook</a>
-        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Mariage%20de%20Margaux%20%26%20Odran&amp;dates=20270918/20270919&amp;location=Domaine%20de%20la%20Fontaine%2C%201379%20rue%20de%20la%20Reine%20Blanche%2C%2045160%20Olivet&amp;details=Mariage%20de%20Margaux%20%26%20Odran.%20Les%20horaires%20pr%C3%A9cis%20seront%20communiqu%C3%A9s%20prochainement.%20Plus%20d%27infos%20%3A%20https%3A//odran92.github.io/mariage/mariage-margaux-odran/" target="_blank" rel="noopener">Google Agenda</a>
-      </p>
+    <div class="hud" aria-hidden="true">
+      <div class="rec"><b>REC</b><span id="tc">00:00:00:00</span></div>
+      <div>PGM · Paris &amp; Île-de-France</div>
     </div>
 
-    <!-- Photo du couple : fichier "photo-couple.jpg" placé à côté de ce fichier -->
-    <div class="arch" role="img" aria-label="Portrait de Margaux et Odran">
-      <img src="photo-couple.jpg" alt="Margaux et Odran devant la fontaine à Rome" width="1000" height="1333" fetchpriority="high" onerror="this.remove()">
-      <span class="ph">Votre photo ici</span>
+    <div class="lower">
+      <h1 class="l-name"><span>Odran</span><span>Leguedey</span></h1>
+      <div class="l-bar">
+        <div class="role">Responsable Communication &amp; Événementiel</div>
+        <div class="org">Afdas, depuis 2024</div>
+      </div>
     </div>
-  </div>
-  <a class="scroll-cue" href="#rsvp" aria-label="Aller à la réponse">Défiler</a>
-</section>
 
-<!-- ============ COMPTE À REBOURS ============ -->
-<section class="count" aria-label="Compte à rebours">
-  <div class="wrap">
-    <h2>Le grand jour approche</h2>
-    <div class="clock" id="clock" role="timer" aria-live="off">
-      <div><b id="d">0</b><small>jours</small></div>
-      <div><b id="h">0</b><small>heures</small></div>
-      <div><b id="m">0</b><small>minutes</small></div>
-      <div><b id="s">0</b><small>secondes</small></div>
+    <div class="hero-foot">
+      <p><strong>Plus de 9 ans</strong> à construire des contenus que l'on regarde jusqu'au bout : stratégie éditoriale, studio TV, événements nationaux et réseaux sociaux.</p>
+      <div class="ctas">
+        <a class="btn btn-signal" href="#contact">Me contacter</a>
+        <a class="btn btn-ghost" href="#parcours">Voir mon parcours</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ RSVP ============ -->
-<section class="rsvp" id="rsvp" aria-labelledby="t-rsvp">
-  <div class="wrap">
-    <div class="intro">
-      <p class="eyebrow">R.S.V.P.</p>
-      <h2 class="h2" id="t-rsvp">Vous serez <em>des nôtres ?</em></h2>
-      <p>Vos réponses nous aideront à organiser cette belle journée.</p>
-      <p class="notice" id="notice" hidden>Les réponses ne sont pas encore ouvertes. Revenez bientôt, la date limite sera indiquée ici.</p>
-    </div>
-
-    <form id="rsvp-form" novalidate>
-      <fieldset id="rsvp-fields">
-        <div class="field">
-          <label for="nom">Prénom et nom</label>
-          <input type="text" id="nom" name="nom" autocomplete="name" required>
-        </div>
-
-        <div class="field">
-          <fieldset style="gap:0">
-            <legend>Serez-vous présent(e) ?</legend>
-            <div class="choices">
-              <input type="radio" id="oui" name="presence" value="Oui" required>
-              <label for="oui">Avec grand plaisir</label>
-              <input type="radio" id="non" name="presence" value="Non">
-              <label for="non">Je ne pourrai pas venir</label>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="field" id="row-accompagne" hidden>
-          <fieldset style="gap:0">
-            <legend>Serez-vous accompagné(e) ?</legend>
-            <div class="ask-row">
-              <div class="choices">
-                <input type="radio" id="acc-non" name="accompagne" value="Non" checked>
-                <label for="acc-non">Non</label>
-                <input type="radio" id="acc-oui" name="accompagne" value="Oui">
-                <label for="acc-oui">Oui</label>
-              </div>
-              <div class="inline" id="acc-detail" hidden>
-                <label class="sr" for="acc-nom">Nom de la personne</label>
-                <input type="text" id="acc-nom" name="nom_accompagnant" placeholder="Prénom et nom de la personne" autocomplete="off">
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="field" id="row-enfants" hidden>
-          <fieldset style="gap:0">
-            <legend>Venez-vous avec des enfants ?</legend>
-            <div class="ask-row">
-              <div class="choices">
-                <input type="radio" id="kid-non" name="enfants" value="Non" checked>
-                <label for="kid-non">Non</label>
-                <input type="radio" id="kid-oui" name="enfants" value="Oui">
-                <label for="kid-oui">Oui</label>
-              </div>
-              <div class="inline small" id="kids-detail" hidden>
-                <label class="sr" for="kid-nb">Nombre d’enfants</label>
-                <input type="number" id="kid-nb" name="nombre_enfants" min="1" max="10" placeholder="Combien&#8239;?" inputmode="numeric">
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="field">
-          <label for="regime">Allergies ou régime alimentaire</label>
-          <input type="text" id="regime" name="regime">
-        </div>
-
-        <div class="field">
-          <label for="mot">Un petit mot pour nous</label>
-          <textarea id="mot" name="message"></textarea>
-        </div>
-
-        <p class="status" id="status" role="status" aria-live="polite"></p>
-        <button class="btn" type="submit" id="send">Envoyer ma réponse</button>
-      </fieldset>
-    </form>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Stratégie de communication</span><span>Studio TV</span><span>Événementiel national</span><span>Podcasts</span><span>Lives &amp; webinaires</span><span>Social media</span><span>Storytelling</span><span>Management d'équipe</span>
+    <span>Stratégie de communication</span><span>Studio TV</span><span>Événementiel national</span><span>Podcasts</span><span>Lives &amp; webinaires</span><span>Social media</span><span>Storytelling</span><span>Management d'équipe</span>
   </div>
-</section>
+</div>
 
-<!-- ============ HISTOIRE ============ -->
-<section class="story" id="histoire" aria-labelledby="t-histoire">
+<!-- RÉSULTATS -->
+<section id="resultats">
   <div class="wrap">
-    <div>
-      <p class="eyebrow">Notre histoire</p>
-      <h2 class="h2" id="t-histoire">Notre plus belle histoire s’écrit <em>avec vous</em></h2>
-      <div class="path">
-        <div>
-          <time datetime="2024-12-30">30 décembre 2024</time>
-          <span>Rome, la demande en mariage</span>
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Audiences</div>
+        <h2>Des chiffres qui parlent d'eux-mêmes</h2>
+      </div>
+      <p>Ce que mes contenus ont produit, mesuré sur les plateformes où ils ont été diffusés.</p>
+    </div>
+    <div class="audience">
+      <div class="aud-grid">
+        <div class="aud">
+          <div class="num">7M</div>
+          <div class="what">vues Instagram</div>
+          <div class="where">Institut Médical Sport Santé</div>
         </div>
-        <div>
-          <time datetime="2027-09-18">18 septembre 2027</time>
-          <span>Orléans, le grand jour</span>
+        <div class="aud">
+          <div class="num"><sup>+</sup>360k</div>
+          <div class="what">impressions LinkedIn en 2025</div>
+          <div class="where">Afdas</div>
+        </div>
+        <div class="aud">
+          <div class="num"><sup>+</sup>10k</div>
+          <div class="what">abonnés à la newsletter LinkedIn en un an</div>
+          <div class="where">Afdas</div>
+        </div>
+        <div class="aud">
+          <div class="num">OSE</div>
+          <div class="what">lancement de la plateforme d'orientation sur les métiers</div>
+          <div class="where">Afdas</div>
         </div>
       </div>
     </div>
-    <div>
-      <p>Des premiers instants partagés à notre demande en mariage à Rome, le 30 décembre 2024, notre histoire nous a conduits à ce merveilleux rendez-vous.</p>
-      <p>Le 18 septembre 2027, nous serons heureux de tourner une nouvelle page, entourés des personnes que nous aimons.</p>
-      <p class="sign">Margaux &amp; Odran</p>
+  </div>
+</section>
+
+<!-- PROFIL -->
+<section class="profil" id="profil">
+  <div class="wrap profil-grid">
+    <figure class="portrait" style="margin:0">
+      <img src="https://oleguedey-ctrl.github.io/1753259608152.jpg" alt="Portrait d'Odran Leguedey" loading="lazy" width="440" height="550">
+      <figcaption class="tag"><b>Odran Leguedey</b><span>Paris &amp; Île-de-France</span></figcaption>
+    </figure>
+    <div class="profil-text">
+      <div class="kicker">Profil</div>
+      <p class="lead">J'accompagne les organisations dans la valorisation de leur image et le déploiement de projets de communication à forte visibilité.</p>
+      <div class="qualities">
+        <div class="q"><h3>Stratégie &amp; analyse</h3><p>Lire les chiffres, comprendre les publics et construire un plan qui a de l'impact.</p></div>
+        <div class="q"><h3>Leadership</h3><p>Fédérer une équipe pluridisciplinaire et piloter des projets transverses.</p></div>
+        <div class="q"><h3>Créativité</h3><p>Proposer des idées neuves et les transformer en formats concrets.</p></div>
+        <div class="q"><h3>Réactivité</h3><p>Garder le cap en direct, face aux imprévus et aux priorités qui changent.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PROGRAMME ============ -->
-<section class="prog" id="programme" aria-labelledby="t-prog">
+<!-- VIDÉOS -->
+<section class="wall" id="videos">
   <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">Le grand jour</p>
-      <h2 class="h2" id="t-prog">Le programme de notre journée</h2>
-      <p>Les horaires précis seront ajoutés prochainement.</p>
+    <div class="sec-head">
+      <div>
+        <div class="kicker">À l'antenne</div>
+        <h2>Quelques productions</h2>
+      </div>
+      <p>Capsules, aftermovies, podcasts et webinaires conçus, tournés et montés avec mes équipes.</p>
     </div>
-    <ol class="steps">
-      <li>
-        <span class="when">Horaire à venir</span><!-- ex : 15h00 -->
-        <div>
-          <h3>La cérémonie civile</h3>
-          <p>Mairie d’Orléans.</p>
-        </div>
-      </li>
-      <li>
-        <span class="when">Horaire à venir</span>
-        <div>
-          <h3>La cérémonie religieuse</h3>
-          <p>Église Saint-Marceau, Orléans.</p>
-        </div>
-      </li>
-      <li>
-        <span class="when">Horaire à venir</span>
-        <div>
-          <h3>Le cocktail</h3>
-          <p>Retrouvons-nous autour d’un verre au Domaine de la Fontaine.</p>
-        </div>
-      </li>
-      <li>
-        <span class="when">Horaire à venir</span>
-        <div>
-          <h3>Le dîner</h3>
-          <p>Un moment gourmand et convivial à partager ensemble.</p>
-        </div>
-      </li>
-      <li>
-        <span class="when">Horaire à venir</span>
-        <div>
-          <h3>La soirée</h3>
-          <p>Place à la fête et à la piste de danse !</p>
-        </div>
-      </li>
-    </ol>
+    <div class="screens">
+      <a class="screen" href="https://www.instagram.com/p/CzmAE2_Imbg/" target="_blank" rel="noopener">
+        <img src="https://oleguedey-ctrl.github.io/CAPSULE%20VIDEO.png" alt="" loading="lazy">
+        <span class="src">INSTAGRAM</span><span class="play" aria-hidden="true"></span>
+        <span class="cap"><b>Capsule vidéo</b><span>Format court réseaux sociaux</span></span>
+      </a>
+      <a class="screen" href="https://www.instagram.com/p/DZ-UarfxXc7/" target="_blank" rel="noopener">
+        <img src="https://oleguedey-ctrl.github.io/AFTERMOVIE.png" alt="" loading="lazy">
+        <span class="src">INSTAGRAM</span><span class="play" aria-hidden="true"></span>
+        <span class="cap"><b>Aftermovie</b><span>Retour sur un événement</span></span>
+      </a>
+      <a class="screen" href="https://www.instagram.com/p/Cx7nIcAM3nV/" target="_blank" rel="noopener">
+        <img src="https://oleguedey-ctrl.github.io/PODCAST%20(1).png" alt="" loading="lazy">
+        <span class="src">INSTAGRAM</span><span class="play" aria-hidden="true"></span>
+        <span class="cap"><b>Podcast</b><span>Réalisation et montage</span></span>
+      </a>
+      <a class="screen" href="https://www.youtube.com/watch?v=ruq6IBRuIpQ&amp;t=15s" target="_blank" rel="noopener">
+        <img src="https://oleguedey-ctrl.github.io/WEBINAIRE.png" alt="" loading="lazy">
+        <span class="src">YOUTUBE</span><span class="play" aria-hidden="true"></span>
+        <span class="cap"><b>Webinaire</b><span>Diffusion en direct</span></span>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ============ LIEUX ============ -->
-<section class="places" id="lieux" aria-labelledby="t-lieux">
+<!-- PARCOURS -->
+<section id="parcours">
   <div class="wrap">
-    <div class="places-head">
-      <p class="eyebrow">Les lieux</p>
-      <h2 class="h2" id="t-lieux">Trois lieux, une belle journée.</h2>
+    <div class="sec-head">
+      <div>
+        <div class="kicker">Conducteur</div>
+        <h2>Parcours professionnel</h2>
+      </div>
+      <p>De la radio à la communication nationale : dix ans de contenus, de lives et d'événements.</p>
     </div>
-    <div class="arcade">
-      <article class="bay">
-        <div class="pic"><img src="mairie.jpg" alt="Façade de l'Hôtel de Ville d'Orléans" width="546" height="366" loading="lazy"></div>
-        <div class="txt">
-          <p class="kind">La cérémonie civile</p>
-          <h3>Mairie d’Orléans</h3>
-          <p>Hôtel de Ville</p>
-          <a class="link" href="https://www.google.com/maps/search/?api=1&query=H%C3%B4tel+de+Ville+Orl%C3%A9ans" target="_blank" rel="noopener">Voir l’itinéraire</a>
-        </div>
+    <div class="rundown">
+      <article class="slot">
+        <div class="when">2024 – auj.<span class="live">EN POSTE</span></div>
+        <div><h3>Responsable Communication &amp; Événementiel</h3><div class="org">Afdas</div></div>
+        <ul>
+          <li><strong>Pilotage de la stratégie</strong> de communication nationale</li>
+          <li><strong>Coordination d'une équipe</strong> pluridisciplinaire : communication, digital, vidéo, graphisme et événementiel</li>
+          <li><strong>Lancement de la plateforme OSE</strong>, dédiée à l'orientation et à l'information sur les métiers</li>
+          <li><strong>Pilotage du studio TV</strong> interne : conception, tournage et diffusion de contenus vidéo</li>
+          <li><strong>Organisation d'événements</strong> nationaux : conférences, salons, webinaires</li>
+          <li><strong>Gestion de la ligne éditoriale</strong> et des réseaux sociaux</li>
+          <li><strong>Production de contenus</strong> à forte visibilité : plus de 360 000 impressions LinkedIn en 2025</li>
+        </ul>
       </article>
-      <article class="bay">
-        <div class="pic"><img src="eglise.jpg" alt="Orgue et nef de l'église Saint-Marceau" width="900" height="600" loading="lazy"></div>
-        <div class="txt">
-          <p class="kind">La cérémonie religieuse</p>
-          <h3>Église Saint-Marceau</h3>
-          <p>Orléans</p>
-          <a class="link" href="https://www.google.com/maps/search/?api=1&query=%C3%89glise+Saint-Marceau+Orl%C3%A9ans" target="_blank" rel="noopener">Voir l’itinéraire</a>
-        </div>
+      <article class="slot">
+        <div class="when">2023 – 2024</div>
+        <div><h3>Responsable Communication</h3><div class="org">Groupe des Instituts Médicaux</div></div>
+        <ul>
+          <li><strong>Création de la stratégie</strong> de communication des marques du groupe</li>
+          <li><strong>Gestion des réseaux sociaux</strong> et création de contenus attractifs</li>
+          <li><strong>Organisation de congrès</strong> et d'événements médicaux</li>
+          <li><strong>Réalisation et montage</strong> de podcasts</li>
+          <li><strong>Lancement de la marque</strong> Institut Médical de la Peau</li>
+        </ul>
       </article>
-      <article class="bay">
-        <div class="pic"><img src="domaine.jpg" alt="Façade du Domaine de la Fontaine" width="490" height="323" loading="lazy"></div>
-        <div class="txt">
-          <p class="kind">La réception</p>
-          <h3>Domaine de la Fontaine</h3>
-          <p>1379 rue de la Reine Blanche<br>45160 Olivet</p>
-          <a class="link" href="https://www.google.com/maps/search/?api=1&query=Domaine%20de%20la%20Fontaine%2C%201379%20rue%20de%20la%20Reine%20Blanche%2C%2045160%20Olivet" target="_blank" rel="noopener">Voir l’itinéraire</a>
-        </div>
+      <article class="slot">
+        <div class="when">2022 – 2023</div>
+        <div><h3>Community Manager Senior</h3><div class="org">Groupe IKIGAI Education</div></div>
+        <ul>
+          <li><strong>Définition et mise en œuvre</strong> de la stratégie digitale pour générer des leads</li>
+          <li><strong>Animation des communautés</strong> et gestion quotidienne des interactions</li>
+          <li><strong>Création de contenus</strong> variés : publications, visuels, vidéos, stories, jeux</li>
+          <li><strong>Réalisation de lives</strong> Facebook et YouTube avec Streamyard</li>
+          <li><strong>Analyse des performances</strong> et optimisation des campagnes</li>
+        </ul>
+      </article>
+      <article class="slot">
+        <div class="when">2015 – 2022</div>
+        <div><h3>Community Manager</h3><div class="org">Groupe NRJ, Nostalgie</div></div>
+        <ul>
+          <li><strong>Gestion des réseaux sociaux</strong> de Nostalgie et de la matinale</li>
+          <li><strong>Planification de la stratégie</strong> digitale et création de contenus</li>
+          <li><strong>Réalisation de vidéos en direct</strong> avec OBS Studio</li>
+          <li><strong>Reporting et analyse</strong> des performances hebdomadaires</li>
+        </ul>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ OÙ DORMIR ? ============ -->
-<section class="stay" id="dormir" aria-labelledby="t-dormir">
+<!-- COMPÉTENCES -->
+<section class="kit" id="competences">
   <div class="wrap">
-    <div class="stay-head">
-      <div class="stay-title">
-        <p class="eyebrow">Hébergements</p>
-        <h2 class="h2" id="t-dormir">Où <em>dormir</em> ?</h2>
+    <div class="sec-head">
+      <div>
+        <div class="kicker">La régie</div>
+        <h2>Compétences &amp; outils</h2>
       </div>
-      <p class="stay-intro">Pour profiter pleinement de cette journée et danser jusqu’au bout de la nuit, nous avons sélectionné quelques hébergements à proximité du Domaine de la Fontaine. Retrouvez-les sur la carte et choisissez celui qui vous convient le mieux !</p>
+      <p>Ce que je maîtrise, du plan stratégique jusqu'à la timeline de montage.</p>
     </div>
-
-    <div class="stay-filters" role="group" aria-label="Filtrer les hébergements">
-      <button type="button" class="is-on" data-filter="tous" aria-pressed="true">Tous <span class="n"></span></button>
-      <button type="button" data-filter="proche" aria-pressed="false">À proximité du domaine <span class="n"></span></button>
-      <button type="button" data-filter="hotel" aria-pressed="false">Hôtels <span class="n"></span></button>
-      <button type="button" data-filter="chambres" aria-pressed="false">Chambres d’hôtes <span class="n"></span></button>
-      <button type="button" data-filter="budget" aria-pressed="false">Petits budgets <span class="n"></span></button>
-    </div>
-
-    <div class="stay-mapbox">
-      <div id="stay-map" class="stay-map" role="region" aria-label="Carte des hébergements autour du Domaine de la Fontaine"></div>
-    </div>
-    <div class="stay-meta">
-      <p id="stay-hint" class="stay-hint"></p>
-      <p id="stay-count" class="stay-count" aria-live="polite"></p>
-    </div>
-
-    <ul id="stay-list" class="stay-list"></ul>
-    <p id="stay-empty" class="stay-empty" hidden>Aucun hébergement ne correspond à ce filtre pour le moment.</p>
-    <p class="stay-note">Distances calculées à vol d’oiseau depuis le domaine. Les tarifs et disponibilités sont à consulter directement auprès de chaque établissement.</p>
-  </div>
-</section>
-
-<!-- ============ CAGNOTTE / VOYAGE DE NOCES ============ -->
-<section class="gift" id="cagnotte" aria-labelledby="t-cagnotte">
-  <div class="wrap">
-    <div class="gift-head">
-      <p class="eyebrow">Un rêve à partager</p>
-      <h2 class="h2" id="t-cagnotte">Voyage de <em>noces</em></h2>
-    </div>
-    <div class="gift-body">
-      <p>Le 18 septembre 2027, nous aurons le bonheur de nous dire oui, entourés de nos familles et de nos amis.</p>
-      <p>Votre présence à nos côtés sera déjà le plus beau des cadeaux !</p>
-      <p>Pour prolonger cette belle aventure, nous rêvons de partir à la découverte du Japon pour notre voyage de noces.</p>
-      <p>Pour celles et ceux qui souhaitent contribuer à ce beau projet, nous avons ouvert cette cagnotte. Chaque participation, quel que soit son montant, nous aidera à réaliser ce rêve et à créer de merveilleux souvenirs.</p>
-      <p>Merci du fond du cœur de faire partie de notre histoire !</p>
-      <p class="sign">Margaux &amp; Odran</p>
-
-      <div class="iban-line">
-        <span class="iban-label">IBAN</span>
-        <span class="iban-val" id="iban-iban"></span>
-        <button type="button" class="iban-copy" id="iban-copy">Copier</button>
+    <div class="kit-grid">
+      <div>
+        <h3>Compétences clés</h3>
+        <ul class="skills">
+          <li>Stratégie de communication digitale</li>
+          <li>Communication &amp; réseaux sociaux</li>
+          <li>Production audiovisuelle &amp; montage</li>
+          <li>Événementiel &amp; gestion de projets</li>
+          <li>Management &amp; coordination d'équipes</li>
+          <li>Création de contenus &amp; storytelling</li>
+          <li>Relations presse &amp; partenariats</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Outils &amp; logiciels</h3>
+        <div class="tools">
+          <span>Adobe Premiere Pro</span><span>Photoshop</span><span>OBS Studio</span><span>Streamyard</span><span>Livestorm</span><span>Hootsuite</span><span>Meta Business Suite</span><span>Canva</span><span>PowerPoint</span><span>Trello</span><span>WordPress</span><span>Google Analytics</span>
+        </div>
+      </div>
+      <div>
+        <h3>Formations</h3>
+        <div class="forms">
+          <div><b>BTS Communication, option Animation des médias</b><span>Studio École de France, 2013 – 2015</span></div>
+          <div><b>Management d'équipe</b><span>Formation continue</span></div>
+          <div><b>Adobe Premiere Pro</b><span>Niveau 3</span></div>
+          <div><b>Photoshop</b><span>Niveau 4</span></div>
+          <div><b>Community Manager</b><span>Spécialisation professionnelle</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SOUVENIRS ============ -->
-<section class="memo" id="souvenirs" aria-labelledby="t-souvenirs">
+<!-- CONTACT -->
+<section class="contact" id="contact">
   <div class="wrap">
-    <div class="memo-head">
-      <p class="memo-eyebrow">Partagez vos photos et vidéos</p>
-      <h2 class="h2" id="t-souvenirs">Nos plus beaux <em>souvenirs</em></h2>
-      <div class="memo-text">
-        <p>Un sourire volé, une danse improvisée, un fou rire, un instant inoubliable…</p>
-        <p>Vous avez immortalisé un moment de notre mariage ? Partagez-le avec nous !</p>
-        <p>Grâce à vous, nous pourrons revivre cette journée à travers vos regards et conserver tous ces précieux souvenirs.</p>
+    <div class="kicker">Contact</div>
+    <h2>Parlons de votre prochain projet.</h2>
+    <p class="intro">Un poste, une collaboration, un événement à lancer ? Je réponds rapidement.</p>
+    <div class="lines">
+      <div class="line">
+        <small>Email</small>
+        <a href="mailto:o.leguedey@gmail.com">o.leguedey@gmail.com</a>
+        <button class="copy" type="button" data-copy="o.leguedey@gmail.com">Copier l'adresse</button>
+      </div>
+      <div class="line">
+        <small>Téléphone</small>
+        <a href="tel:+33649730599">06 49 73 05 99</a>
+        <button class="copy" type="button" data-copy="06 49 73 05 99">Copier le numéro</button>
+      </div>
+      <div class="line">
+        <small>LinkedIn</small>
+        <a href="https://www.linkedin.com/in/odran-leguedey-1ba278154/" target="_blank" rel="noopener">Odran Leguedey</a>
+        <small>Paris &amp; Île-de-France</small>
       </div>
     </div>
-
-    <div class="memo-cta">
-      <a class="memo-btn" id="memo-photos" href="https://script.google.com/macros/s/AKfycbxEStrasQHw445A9FM4XHJJfkA3N4Trd06Owk91qSpOPOxb6KfwoAD-XXqZoxCtGqpxkg/exec" target="_blank" rel="noopener"><span>Partager mes souvenirs</span><i aria-hidden="true">→</i></a>
-      <p class="memo-sub">Photos &amp; vidéos · qualité d’origine · espace privé</p>
-    </div>
-
-    <input type="file" id="memo-input" accept="image/*,.heic,.heif" multiple hidden>
-
-    <div class="memo-panel" id="memo-panel" hidden aria-live="polite">
-      <p class="memo-summary" id="memo-summary"></p>
-      <div class="memo-actions">
-        <button type="button" class="btn" id="memo-send" hidden>Envoyer mes souvenirs</button>
-        <button type="button" class="memo-link" id="memo-pick">Choisir d’autres photos</button>
-      </div>
-      <div class="memo-bar" id="memo-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span id="memo-bar-fill"></span></div>
-      <p class="memo-status" id="memo-status"></p>
-      <p class="memo-warn" id="memo-warn" hidden>Gardez cette page ouverte et l’écran allumé jusqu’à la fin de l’envoi.</p>
-      <button type="button" class="btn" id="memo-retry" hidden>Réessayer</button>
-      <p class="memo-done" id="memo-done" hidden></p>
-      <button type="button" class="memo-link" id="memo-again" hidden>Ajouter d’autres photos</button>
-      <ul class="memo-list" id="memo-list"></ul>
-    </div>
-
-    <div class="memo-test" id="memo-test" hidden>
-      <p><strong>Mode test</strong> (réservé aux mariés)</p>
-      <button type="button" class="btn" id="memo-test-run">Lancer le test d’envoi</button>
-      <div id="memo-test-out"></div>
+    <div class="foot">
+      <span>© 2026 Odran Leguedey</span>
+      <a href="https://oleguedey-ctrl.github.io/CV%20ODRAN%20LEGUEDEY.pdf" target="_blank" rel="noopener">Télécharger le CV en PDF</a>
     </div>
   </div>
 </section>
-
-<!-- ============ INFOS ============ -->
-<section class="faq" id="infos" aria-labelledby="t-infos">
-  <div class="wrap">
-    <p class="eyebrow">Bon à savoir</p>
-    <h2 class="h2" id="t-infos">Les petites informations utiles</h2>
-
-    <details>
-      <summary>À quelle heure faut-il arriver ?</summary>
-      <p>Les horaires définitifs de la cérémonie et de la réception seront communiqués prochainement.</p>
-    </details>
-    <details>
-      <summary>Où peut-on dormir ?</summary>
-      <p>Pour trouver votre petit nid douillet après la fête, rendez-vous dans notre rubrique « <a class="faq-link" href="#dormir">Où dormir ?</a> », où vous retrouverez une sélection d’hébergements à proximité du Domaine de la Fontaine, ainsi qu’une carte interactive pour organiser votre séjour.<br>Et pour profiter de la soirée jusqu’au bout, des taxis seront à votre disposition de 1&nbsp;h à 5&nbsp;h du matin pour vous raccompagner à votre hôtel. Vous pourrez ainsi danser l’esprit tranquille !</p>
-    </details>
-    <details>
-      <summary>Comment se rendre sur place ?</summary>
-      <p>Le Domaine de la Fontaine se trouve au 1379 rue de la Reine Blanche, 45160 Olivet. Les liens d’itinéraire de chaque lieu sont dans la section « Les lieux ». Les conseils de stationnement seront ajoutés prochainement.</p>
-    </details>
-    <details>
-      <summary>Peut-on venir avec des enfants ?</summary>
-      <p>Oui, les enfants sont les bienvenus ! Des babysitters seront présents pour que les parents puissent profiter pleinement de la fête.</p>
-    </details>
-    <details>
-      <summary>Y a-t-il un dress code ?</summary>
-      <p>Aucun dress code imposé : sortez vos plus belles tenues, l’essentiel est que vous soyez élégants et à l’aise !<br>Petite précision toutefois : le blanc a déjà trouvé preneuse pour la journée.</p>
-    </details>
-  </div>
-</section>
-
 </main>
 
-<!-- ============ PIED DE PAGE ============ -->
-<footer>
-  <a class="logo" href="#top">M <span>&amp;</span> O</a>
-  <p class="date">XVIII.IX.MMXXVII</p>
-  <p>Un beau jour à partager, ensemble. Avec tout notre amour.</p>
-</footer>
-
 <script>
-/* Apparition douce des sections au défilement. Sans effet si le navigateur ne sait pas faire, ou si « mouvement réduit » est demandé. */
-(function () {
-  try {
-    if (!("IntersectionObserver" in window)) return;
-    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var sel = [".story .wrap > div", ".prog .head", ".steps li", ".places-head", ".bay", ".stay-head", ".gift-head", ".gift-body",
-               ".memo-head", ".memo-cta", ".rsvp .intro", "#rsvp-form", ".faq .eyebrow", ".faq .h2", ".faq details"];
-    var els = document.querySelectorAll(sel.join(","));
-    if (!els.length) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var el = e.target; io.unobserve(el);
-        el.classList.add("in");
-        setTimeout(function () { el.removeAttribute("data-reveal"); el.classList.remove("in"); el.style.removeProperty("--d"); }, 1500 + (parseFloat(el.getAttribute("data-d")) || 0) * 1000);
-      });
-    }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
-    els.forEach(function (el) {
-      var sibs = el.parentNode ? Array.prototype.filter.call(el.parentNode.children, function (c) { return c.tagName === el.tagName && c.className === el.className; }) : [el];
-      var d = Math.min(sibs.indexOf(el), 4) * 0.09;
-      el.style.setProperty("--d", d + "s"); el.setAttribute("data-d", d); el.setAttribute("data-reveal", "");
-      io.observe(el);
+(function(){
+  // En-tête qui se fond dans la vidéo puis devient opaque au défilement
+  var top=document.getElementById('top');
+  function onScroll(){top.classList.toggle('scrolled',window.scrollY>40)}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  // Timecode façon régie (25 images/s)
+  var tc=document.getElementById('tc'),t0=performance.now();
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(now){
+    var f=Math.floor((now-t0)/40),ff=f%25,s=Math.floor(f/25);
+    tc.textContent=pad(Math.floor(s/3600))+':'+pad(Math.floor(s/60)%60)+':'+pad(s%60)+':'+pad(ff);
+    requestAnimationFrame(tick);
+  }
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){requestAnimationFrame(tick)}
+
+  // Vidéo : on masque le fond si elle ne se charge pas
+  var v=document.querySelector('.onair video');
+  if(v){v.addEventListener('error',function(){v.hidden=true},true)}
+
+  // Boutons copier
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var txt=b.dataset.copy,label=b.textContent;
+      function done(){b.textContent='Copié';setTimeout(function(){b.textContent=label},1600)}
+      if(navigator.clipboard){navigator.clipboard.writeText(txt).then(done,function(){})}
     });
-    document.documentElement.classList.add("js-reveal");
-  } catch (e) { /* l'effet est facultatif */ }
+  });
 })();
 </script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
-<script src="hebergements.js?v=1" defer></script>
-<script src="carte.js?v=1" defer></script>
-<script src="souvenirs-config.js?v=2" defer></script>
-<script src="souvenirs.js?v=2" defer></script>
-<script src="script.js?v=4" defer></script>
 </body>
 </html>
